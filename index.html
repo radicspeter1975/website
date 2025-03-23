@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="hu">
-<!-- 25.03.23 github verzio 0.1 -->
+<!-- 25.03.23 github verzio 0.2 -->
 <head>
 	<title>https://radicspeter1975.github.io/</title>
 	<meta charset="utf-8">
@@ -109,8 +109,7 @@ function dal(mit){
 
     // title sorok - at kell irni!
     let videolink=`<a id="currentlink" data-favour="${webcim+title}" target="_blank" href="https://www.youtube.com/watch?v=${videoid}">${webcim}</a>`;
-    //hely.innerHTML= `<h4 class="w3-teal"><a id="ptitle" href="/website/index?${webcim}">${title}</a> ${videolink}</h4><br>`;
-    hely.innerHTML= `<h4 class="w3-teal" id="ptitle">${title} ${videolink}</h4><br>`;        
+    hely.innerHTML= `<h4 class="w3-teal"><span id="ptitle">${title}</span> ${videolink}</h4><br>`;        
     // tobbi
     peti_fetch_fv(html_path + webcim + '.html', kiir);
 }
@@ -187,23 +186,9 @@ function addremfav(){
      storagearray.splice(storagearray.indexOf(aktualiscim), 1);
  }
  else  {
-     
     storagearray.push(aktualiscim);
     storagearray.sort((a, b) => { return sortcollator.compare(a.substr(10), b.substr(10)); });
-
-/*
-storagearray.sort (
-    function (a, b) {
-        if ( a.substr(10) === b.substr(10)) {
-            return 0;
-        } else {
-            return (a.substr(10) < b.substr(10)) ? -1 : 1;
-        }
-    }
-    );
-*/
-
- }
+  }
  
  localStorage.setItem('favourites',storagearray.join('|'));
  updatefavbtn();
@@ -294,16 +279,6 @@ const indexT=listaT.slice(listaT.length-20);
 {
 // abc szerint rendezes a keresohoz
 listaT.sort((a, b) => { return sortcollator.compare(a[2], b[2]); });
-
-/* listaT.sort (
-    function (a, b) {
-        if (a[2] === b[2]) {
-            return 0;
-        } else {
-            return (a[2] < b[2]) ? -1 : 1;
-        }
-    }
-); */
 
 // php nincs mar
 dal("akt");
