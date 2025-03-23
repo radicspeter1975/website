@@ -1,17 +1,15 @@
 <!DOCTYPE html>
 <html lang="hu">
-<!-- 24.11.23 html -->
+<!-- 25.03.23 github verzio -->
 <head>
-	<title>tesztszerverem.hu</title>
+	<title>https://radicspeter1975.github.io/</title>
 	<meta charset="utf-8">
-    <meta name="description" content="Radics Péter tesztszervere">
-    <meta name="keywords" content="Topikutya zenélde klippek kották névnap képek virágok programok">
+    <meta name="description" content="Radics Péter github teszje">
+    <meta name="keywords" content="zenélde klippek kották">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="icon" type="image/x-icon" href="/favicon.ico">
-	<link rel="apple-touch-icon" href="/favicon.png">
+	<link rel="icon" type="image/x-icon" href="/website/favicon.ico">
+	<link rel="apple-touch-icon" href="/website/favicon.png">
 	<link rel="stylesheet" href="/website/css/w3.css">
-	<link rel="stylesheet" href="/website/css/media.css">
-	<script src="/website/js/alap.js"></script>
 	<script src="/website/zenelde/zenelde.js?20250323"></script>
 	<style>
  pre { 
@@ -20,6 +18,18 @@
       white-space: pre-wrap;
       word-break: break-all;
     }
+    img  {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  @media screen and (max-width: 680px) {
+    iframe {
+        max-width: 100% !important;
+        width: auto !important;
+        height: auto !important;
+     }
+    }    
 </style>
 </head>
 
@@ -33,7 +43,7 @@
 <main class="w3-container w3-center">
     <!-- 2024.11.23 lasten-"w3-image" -->
 <h4 class="w3-blue w3-padding-small">
-    <label for="kertext">zenélde</label>
+    <label for="kertext">zenélde - github teszt!</label>
     <input class="w3-margin w3-round" id="kertext" type="text" size="25" placeholder="kereső, -: minden, véletlen dal" onkeyup="keres()">
     <button class="w3-button w3-yellow w3-hover-red w3-round-large w3-medium w3-padding-small" onclick="lasten()">új dalok</button>
     <button class="w3-button w3-yellow w3-hover-red w3-round-large w3-medium w3-padding-small" onclick="dal('vel')">véletlen dal</button>
@@ -45,10 +55,17 @@
 </div>
 
 <script>
-//24.09.03  window.history.replaceState...;
-// peti_fetch_fv az alap.js-ben
+//25.03.23 github verzio;
 
 "use strict";
+
+// 23.11.26 peti_fetch_fv(file, callbackfgv)
+async function peti_fetch_fv(file, callbackfgv) {
+    let x = await fetch(file);
+    let y = await x.text();
+    callbackfgv(y);
+}
+
 
 // storage vars
 const storagearray = [];
@@ -59,7 +76,7 @@ const sortcollator = new Intl.Collator('hu', { numeric: true, sensitivity: 'base
 const favbtn = document.getElementById('favbutton');
 const hely = document.getElementById('htartalom');
 
-const phppath = "/website/zenelde/";
+const html_path = "/website/zenelde/";
 let postname="akt";
 
 // -------------------fgv-k----------------------
@@ -68,7 +85,7 @@ function kiir(tartalom){
   hely.innerHTML+=tartalom; // title hamarabb
   document.getElementById("kertext").value="";
   document.title=document.getElementById("ptitle").innerHTML;
-  window.history.replaceState(null, document.title, "/link/zenelde");
+  window.history.replaceState(null, document.title, "/website");
 
   document.getElementById("kertext").blur();
   if(storageready) updatefavbtn();
@@ -91,12 +108,12 @@ function dal(mit){
         else [videoid, webcim, title] = indexT[19];
      }
 
-    // title sorok
+    // title sorok - at kell irni!
     let videolink=`<a id="currentlink" data-favour="${webcim+title}" target="_blank" href="https://www.youtube.com/watch?v=${videoid}">${webcim}</a>`;
-    hely.innerHTML= `<h4 class="w3-teal"><a id="ptitle" href="/link/zenelde?${webcim}">${title}</a> ${videolink}</h4><br>`;
+    hely.innerHTML= `<h4 class="w3-teal"><a id="ptitle" href="/website/index?${webcim}">${title}</a> ${videolink}</h4><br>`;
     
     // tobbi
-    peti_fetch_fv(phppath + webcim + '.html', kiir);
+    peti_fetch_fv(html_path + webcim + '.html', kiir);
 }
 
 function keres(){
@@ -104,7 +121,7 @@ function keres(){
     const mitk = document.getElementById("kertext").value.toUpperCase();
 
     document.title="keresés";
-    window.history.replaceState(null, document.title, "/link/zenelde");
+    window.history.replaceState(null, document.title, "/website");
     favbtn.disabled=true;
     let talalat=0;
     let sorok="";
@@ -147,7 +164,7 @@ function lasten(){
 // indexT-ben az utolso 20
 
     document.title="új dalok";
-    window.history.replaceState(null, document.title, "/link/zenelde");
+    window.history.replaceState(null, document.title, "/website");
 
     favbtn.disabled=true;
     let sorok="";
@@ -203,7 +220,7 @@ function favourites(){
  // kedvenc lista kep+link? + egesz törlése addelement button?
     let sorok;
     document.title="kedvencek";
-    window.history.replaceState(null, document.title, "/link/zenelde");
+    window.history.replaceState(null, document.title, "/website");
     favbtn.disabled=true;
     
     if(storageready){
