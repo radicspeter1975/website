@@ -43,7 +43,7 @@ const listaT = [
 ["XfR9iY5y94s", "2008-10-06", "Men At Work - Down Under"],
 ["ycvJHQUqU1M", "2008-10-07", "R.E.M. - Crush with eyeliner"],
 ["Bgeqw7s00xg", "2008-10-08", "Alanis Morissette - Everything"],
-["6jBVePVwSpg", "2008-10-09", "Suede - Trash"],
+["-PdKGDMhau4", "2008-10-09", "Suede - Trash"],
 ["GJUVxMt1_W8", "2008-10-10", "The Corrs - Old Town"],
 ["OeqvNS1zQSA", "2008-10-11", "Irigy Hónaljmirigy - Csóró a téren #parody"],
 ["46EwecvbGp8", "2008-10-12", "The Cardigans - Hanging Around"],
@@ -627,7 +627,7 @@ const listaT = [
 ["3-QN7zHi7G4", "2012-08-05", "Irigy Hónaljmirigy - Belehalok #parody"],
 ["cE6wxDqdOV0", "2012-08-23", "Lana Del Rey - Video Games"],
 ["-PL81OfTjVI", "2012-08-28", "Bush - Synapse"],
-["S0YDsNPcOY4", "2012-09-07", "Espen Lind - Lucky For You"],
+["qrpBfBT1nGU", "2012-09-07", "Espen Lind - Lucky For You"],
 ["i5nP7ZXOg5I", "2012-09-17", "88-as csoport - Anarchista terrorista"],
 ["Fx5bfLI5slU", "2012-09-18", "Placebo - Teenage Angst"],
 ["0TfqbuTBqX8", "2012-09-19", "Eels - Last Stop: This Town"],
@@ -1174,5 +1174,11 @@ const listaT = [
 ["lbqMD7YrGGQ", "2025-02-22", "The Lightning Seeds - Pure"],
 ["zFNxn1FwWjI", "2025-02-26", "Kabalababa - Rózsaszín Cadillac"],
 ["VcphtYvWw0Y", "2025-03-01", "Pál Utcai Fiúk - Régi Évek"],
-["b2WhIoI27-A", "2025-03-02", "Sub Bass Monster - Ne sírj anyám"]
+["b2WhIoI27-A", "2025-03-02", "Sub Bass Monster - Ne sírj anyám"],
+["I6kfin-UeAQ", "2025-03-06", "Blink-182 - Josie"],
+["3Kp5ggaqjp4", "2025-03-07", "Kaukázus - Szalai Éva"],
+["4i3TRiF8XKQ", "2025-03-08", "Bonanza Banzai - Valami véget ért"],
+["6IMZOz3YllI", "2025-03-12", "Pokolgép - Ítélet Helyett"],
+["ZJL4UGSbeFg", "2025-03-14", "Shania Twain - Man I Feel Like A Woman"],
+["sAgeeHaSf08", "2025-03-15", "Alanis Morissette - Joining You"]
 ];
