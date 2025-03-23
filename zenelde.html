@@ -9,10 +9,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" type="image/x-icon" href="/favicon.ico">
 	<link rel="apple-touch-icon" href="/favicon.png">
-	<link rel="stylesheet" href="/back/css/w3.css">
-	<link rel="stylesheet" href="/back/css/media.css">
-	<script src="/back/js/alap.js"></script>
-	<script src="/back/zenelde/zenelde.js?2025032316"></script>
+	<link rel="stylesheet" href="/website/css/w3.css">
+	<link rel="stylesheet" href="/website/css/media.css">
+	<script src="/website/js/alap.js"></script>
+	<script src="/website/zenelde/zenelde.js?20250323"></script>
 	<style>
  pre { 
       text-align: left; 
@@ -59,7 +59,7 @@ const sortcollator = new Intl.Collator('hu', { numeric: true, sensitivity: 'base
 const favbtn = document.getElementById('favbutton');
 const hely = document.getElementById('htartalom');
 
-const phppath = "/back/php/zenelde_b.php?post=";
+const phppath = "/website/zenelde/";
 let postname="akt";
 
 // -------------------fgv-k----------------------
@@ -96,7 +96,7 @@ function dal(mit){
     hely.innerHTML= `<h4 class="w3-teal"><a id="ptitle" href="/link/zenelde?${webcim}">${title}</a> ${videolink}</h4><br>`;
     
     // tobbi
-    peti_fetch_fv(phppath + webcim, kiir);
+    peti_fetch_fv(phppath + webcim + '.html', kiir);
 }
 
 function keres(){
