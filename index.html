@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="hu">
-<!-- 25.03.23 github verzio -->
+<!-- 25.03.23 github verzio 0.1 -->
 <head>
 	<title>https://radicspeter1975.github.io/</title>
 	<meta charset="utf-8">
@@ -77,7 +77,6 @@ const favbtn = document.getElementById('favbutton');
 const hely = document.getElementById('htartalom');
 
 const html_path = "/website/zenelde/";
-let postname="akt";
 
 // -------------------fgv-k----------------------
 
@@ -306,31 +305,14 @@ listaT.sort((a, b) => { return sortcollator.compare(a[2], b[2]); });
     }
 ); */
 
-// gyorslinkek
-if(postname.substr(0,1)=='?') //search or links
-{
-    let keresendo=postname.substr(1);
-    document.getElementById("kertext").value=keresendo.replace('+',' ');
-    keres();
-}
-else {
-    switch (postname) {
-      case 'uto':
-        lasten();
-        break;
-      case 'fav':
-        favourites();
-        break;        
-      case 'vel':
-      case 'akt':
-      default:
-        dal(postname);
-     } 
-    }
+// php nincs mar
+dal("akt");
 }
 ());
 
-</script></main>
+</script>
+
+</main>
 
 <footer class="w3-container w3-green w3-center">
     2025 kapcsolat:&nbsp;<a class="w3-hover-black" href="/cdn-cgi/l/email-protection#ddbcb9b0b4b39da9b8aea7a9aea7b8afabb8afb8b0f3b5a8e2aea8bfb7b8bea9e0a9b8aea7a9aea7b8afabb8afb8b0f3b5a8">Radics&nbsp;Péter</a> 
