@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="hu">
-<!-- 25.03.23 github verzio 0.2 -->
+<!-- 25.03.24 github 0.3 -->
 <head>
 	<title>https://radicspeter1975.github.io/</title>
 	<meta charset="utf-8">
-    <meta name="description" content="Radics Péter github teszje">
-    <meta name="keywords" content="zenélde klippek kották">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Radics Péter github teszje">
+  <meta name="keywords" content="zenélde klippek kották">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="icon" type="image/x-icon" href="/website/favicon.ico">
 	<link rel="apple-touch-icon" href="/website/favicon.png">
 	<link rel="stylesheet" href="/website/css/w3.css">
@@ -83,7 +83,7 @@ function kiir(tartalom){
   hely.innerHTML+=tartalom; // title hamarabb
   document.getElementById("kertext").value="";
   document.title=document.getElementById("ptitle").innerHTML;
-  window.history.replaceState(null, document.title, "/website");
+  window.history.replaceState(null, '', "/website");
 
   document.getElementById("kertext").blur();
   if(storageready) updatefavbtn();
@@ -119,7 +119,7 @@ function keres(){
     const mitk = document.getElementById("kertext").value.toUpperCase();
 
     document.title="keresés";
-    window.history.replaceState(null, document.title, "/website");
+    window.history.replaceState(null,'', "/website");
     favbtn.disabled=true;
     let talalat=0;
     let sorok="";
@@ -162,7 +162,7 @@ function lasten(){
 // indexT-ben az utolso 20
 
     document.title="új dalok";
-    window.history.replaceState(null, document.title, "/website");
+    window.history.replaceState(null, '', "/website");
 
     favbtn.disabled=true;
     let sorok="";
@@ -204,7 +204,7 @@ function favourites(){
  // kedvenc lista kep+link? + egesz törlése addelement button?
     let sorok;
     document.title="kedvencek";
-    window.history.replaceState(null, document.title, "/website");
+    window.history.replaceState(null, '', "/website");
     favbtn.disabled=true;
     
     if(storageready){
@@ -280,18 +280,18 @@ const indexT=listaT.slice(listaT.length-20);
 // abc szerint rendezes a keresohoz
 listaT.sort((a, b) => { return sortcollator.compare(a[2], b[2]); });
 
-let htmlparam=window.location.search.substring(1); //?vel, ??keresendo, ?20xx-xx-xx link
+let querystring=window.location.search.substring(1); //?vel, ??keresendo, ?20xx-xx-xx link
 
-if (htmlparam!='')
+if (querystring!='')
  {
-  if(htmlparam.substr(0,1)=='?') // ?? search or links
+  if(querystring.substr(0,1)=='?') // ?? search or links
   {
-      htmlparam=htmlparam.substring(1); // search string
-      document.getElementById("kertext").value=htmlparam.replace('+',' ');
+      querystring=querystring.substring(1); // search string
+      document.getElementById("kertext").value=querystring.replace('+',' ');
       keres();
   }
   else {
-      switch (htmlparam) {
+      switch (querystring) {
         case 'uto':
           lasten();
           break;
@@ -301,16 +301,16 @@ if (htmlparam!='')
         case 'vel':
         case 'akt':
         default:
-          dal(htmlparam);
+          dal(querystring);
           break;
        } 
       }
-}
-else {
-  dal('akt');
-}
-
  }
+ else {
+  dal('akt');
+  }
+
+}
 ());
 
 </script>
@@ -318,6 +318,6 @@ else {
 </main>
 
 <footer class="w3-container w3-green w3-center">
-    2025 kapcsolat:&nbsp;<a class="w3-hover-black" href="https://radicspeter.hu">Radics&nbsp;Péter</a> 
+    <a class="w3-hover-black" href="https://github.com/radicspeter1975/website">Radics&nbsp;Péter</a> 
 </footer>
 </html>
