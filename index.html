@@ -76,9 +76,6 @@ const favbtn = document.getElementById('favbutton');
 const hely = document.getElementById('htartalom');
 
 const html_path = "/website/zenelde/";
-let postname=window.location.search;
-// majd szebben
-if(postname==''){ postname='?akt';}
 
 // -------------------fgv-k----------------------
 
@@ -283,29 +280,37 @@ const indexT=listaT.slice(listaT.length-20);
 // abc szerint rendezes a keresohoz
 listaT.sort((a, b) => { return sortcollator.compare(a[2], b[2]); });
 
-let keresendo=postname.substr(1);
+let htmlparam=window.location.search.substring(1); //?vel, ??keresendo, ?20xx-xx-xx link
 
-if(postname.substr(0,1)=='?') //search or links
-{
-    document.getElementById("kertext").value=keresendo.replace('+',' ');
-    keres();
+if (htmlparam!='')
+ {
+  if(htmlparam.substr(1,1)=='?') // ?? search or links
+  {
+      htmlparam=htmlparam.substring(1);
+      document.getElementById("kertext").value=htmlparam.replace('+',' ');
+      keres();
+  }
+  else {
+      switch (htmlparam) {
+        case 'uto':
+          lasten();
+          break;
+        case 'fav':
+          favourites();
+          break;        
+        case 'vel':
+        case 'akt':
+        default:
+          dal(htmlparam);
+          break;
+       } 
+      }
 }
 else {
-    switch (keresendo) {
-      case '?uto':
-        lasten();
-        break;
-      case '?fav':
-        favourites();
-        break;        
-      case '?vel':
-      case '?akt':
-      default:
-        dal(keresendo);
-	      break;
-     } 
-    }
+  dal('akt');
 }
+
+ }
 ());
 
 </script>
