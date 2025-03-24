@@ -284,9 +284,9 @@ let htmlparam=window.location.search.substring(1); //?vel, ??keresendo, ?20xx-xx
 
 if (htmlparam!='')
  {
-  if(htmlparam.substr(1,1)=='?') // ?? search or links
+  if(htmlparam.substr(0,1)=='?') // ?? search or links
   {
-      htmlparam=htmlparam.substring(1);
+      htmlparam=htmlparam.substring(1); // search string
       document.getElementById("kertext").value=htmlparam.replace('+',' ');
       keres();
   }
