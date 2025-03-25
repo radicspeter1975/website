@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="hu">
-<!-- 25.03.24 github 0.3 -->
+<!-- 25.03.25 github 0.4 -->
 <head>
 	<title>https://radicspeter1975.github.io/</title>
 	<meta charset="utf-8">
@@ -41,11 +41,11 @@
 
 <!-- main -->
 <main class="w3-container w3-center">
-    <!-- 2024.11.23 lasten-"w3-image" -->
+
 <h4 class="w3-blue w3-padding-small">
     <label for="kertext">zenélde - github teszt!</label>
     <input class="w3-margin w3-round" id="kertext" type="text" size="25" placeholder="kereső, -: minden, véletlen dal" onkeyup="keres()">
-    <button class="w3-button w3-yellow w3-hover-red w3-round-large w3-medium w3-padding-small" onclick="lasten()">új dalok</button>
+    <button class="w3-button w3-yellow w3-hover-red w3-round-large w3-medium w3-padding-small" onclick="lasttwenty()">új dalok</button>
     <button class="w3-button w3-yellow w3-hover-red w3-round-large w3-medium w3-padding-small" onclick="dal('vel')">véletlen dal</button>
     <button class="w3-button w3-yellow w3-hover-red w3-round-large w3-medium w3-padding-small" id="favours" onclick="favourites()" disabled>kedvencek</button>
     <button class="w3-button w3-red w3-hover-yellow w3-round-large w3-medium w3-padding-small" id="favbutton" title="add/remove favourites" onclick="addremfav()" disabled>+</button>
@@ -108,8 +108,8 @@ function dal(mit){
 
     // title sorok - at kell irni!
     let videolink=`<a id="currentlink" data-favour="${webcim+title}" target="_blank" href="https://www.youtube.com/watch?v=${videoid}">${webcim}</a>`;
-    hely.innerHTML= `<h4 class="w3-teal"><a id="ptitle" href="/website/index.html?${webcim}">${title}</a> ${videolink}</h4><br>`;
-    // hely.innerHTML= `<h4 class="w3-teal"><span id="ptitle">${title}</span> ${videolink}</h4><br>`;        
+    hely.innerHTML= `<h4 class="w3-teal"><a id="ptitle" onclick="dal($webcim);return false" href="/website/index.html?${webcim}">${title}</a> ${videolink}</h4><br>`;
+    // onclick="dal($webcim);return false";
     // tobbi
     peti_fetch_fv(html_path + webcim + '.html', kiir);
 }
@@ -158,7 +158,7 @@ function keres(){
      }
 }
 
-function lasten(){
+function lasttwenty(){
 // indexT-ben az utolso 20
 
     document.title="új dalok";
@@ -293,7 +293,7 @@ if (querystring!='')
   else {
       switch (querystring) {
         case 'uto':
-          lasten();
+          lasttwenty();
           break;
         case 'fav':
           favourites();
