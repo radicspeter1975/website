@@ -7,7 +7,7 @@ A https://tesztszerverem.hu/link/zenelde oldalam áthelyezése ide a szerver ké
 - véletlen dal: https://radicspeter1975.github.io/website/index.html?vel
 - utolsó 20 dal: https://radicspeter1975.github.io/website/index.html?uto
 - kedvencek (localStorage): https://radicspeter1975.github.io/website/index.html?fav
-- egyszerű keresés (pontos kifejezésre): https://radicspeter1975.github.io/website/index.html??bush
+- egyszerű keresés (pontos kifejezésre): https://radicspeter1975.github.io/website/index.html??valami
 - konkrét dal: https://radicspeter1975.github.io/website/index.html?2011-01-22
 
 (de minden megváltozhat :)

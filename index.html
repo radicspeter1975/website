@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="hu">
-<!-- 25.03.25 github 0.4 -->
+<!-- 25.03.25 github 0.5 -->
 <head>
-	<title>https://radicspeter1975.github.io/</title>
+	<title>https://radicspeter1975.github.io/website</title>
 	<meta charset="utf-8">
   <meta name="description" content="Radics Péter github teszje">
   <meta name="keywords" content="zenélde klippek kották">
@@ -36,14 +36,14 @@
 <body class="w3-content">
 
 <header class="w3-green">
-    <h6><a href="/website" class="w3-btn w3-hover-gray">kezdőlap</a></h6>
+    <h6><a href="https://github.com/radicspeter1975/website" class="w3-btn w3-hover-gray">github website teszt kezdőlap</a></h6>
 </header>
 
 <!-- main -->
 <main class="w3-container w3-center">
 
 <h4 class="w3-blue w3-padding-small">
-    <label for="kertext">zenélde - github teszt!</label>
+    <label for="kertext">zenélde</label>
     <input class="w3-margin w3-round" id="kertext" type="text" size="25" placeholder="kereső, -: minden, véletlen dal" onkeyup="keres()">
     <button class="w3-button w3-yellow w3-hover-red w3-round-large w3-medium w3-padding-small" onclick="lasttwenty()">új dalok</button>
     <button class="w3-button w3-yellow w3-hover-red w3-round-large w3-medium w3-padding-small" onclick="dal('vel')">véletlen dal</button>
@@ -55,7 +55,6 @@
 </div>
 
 <script>
-//25.03.23 github verzio;
 
 "use strict";
 
@@ -70,11 +69,12 @@ async function peti_fetch_fv(file, callbackfgv) {
 const storagearray = [];
 let storageready = false;
 
+// ekezetes rendezeshez
 const sortcollator = new Intl.Collator('hu', { numeric: true, sensitivity: 'base' });
 // html vars
+
 const favbtn = document.getElementById('favbutton');
 const hely = document.getElementById('htartalom');
-
 const html_path = "/website/zenelde/";
 
 // -------------------fgv-k----------------------
@@ -106,11 +106,11 @@ function dal(mit){
         else [videoid, webcim, title] = indexT[19];
      }
 
-    // title sorok - at kell irni!
+    // title sorok
     let videolink=`<a id="currentlink" data-favour="${webcim+title}" target="_blank" href="https://www.youtube.com/watch?v=${videoid}">${webcim}</a>`;
-    hely.innerHTML= `<h4 class="w3-teal"><a id="ptitle" onclick="dal($webcim);return false" href="/website/index.html?${webcim}">${title}</a> ${videolink}</h4><br>`;
-    // onclick="dal($webcim);return false";
-    // tobbi
+    hely.innerHTML= `<h4 class="w3-teal"><a id="ptitle" onclick="dal(${webcim});return false" href="/website/index.html?${webcim}">${title}</a> ${videolink}</h4><br>`;
+    
+    // a tenyleges tartalom
     peti_fetch_fv(html_path + webcim + '.html', kiir);
 }
 
@@ -318,6 +318,6 @@ if (querystring!='')
 </main>
 
 <footer class="w3-container w3-green w3-center">
-    <a class="w3-hover-black" href="https://github.com/radicspeter1975/website">Radics&nbsp;Péter</a> 
+    <a class="w3-hover-black" href="https://radicspeter.hu">Radics&nbsp;Péter</a> 
 </footer>
 </html>
