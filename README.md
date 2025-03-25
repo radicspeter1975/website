@@ -11,3 +11,5 @@ A https://tesztszerverem.hu/link/zenelde oldalam áthelyezése ide a szerver ké
 - konkrét dal: https://radicspeter1975.github.io/website/index.html?2011-01-22
 
 (de minden megváltozhat :)
+
+#### Kapcsolat: https://radicspeter.hu
