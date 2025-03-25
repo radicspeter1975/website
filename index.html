@@ -108,7 +108,7 @@ function dal(mit){
 
     // title sorok
     let videolink=`<a id="currentlink" data-favour="${webcim+title}" target="_blank" href="https://www.youtube.com/watch?v=${videoid}">${webcim}</a>`;
-    hely.innerHTML= `<h4 class="w3-teal"><a id="ptitle" onclick="dal(${webcim});return false" href="/website/index.html?${webcim}">${title}</a> ${videolink}</h4><br>`;
+    hely.innerHTML= `<h4 class="w3-teal"><a id="ptitle" onclick="dal(webcim);return false" href="/website/index.html?${webcim}">${title}</a> ${videolink}</h4><br>`;
     
     // a tenyleges tartalom
     peti_fetch_fv(html_path + webcim + '.html', kiir);
