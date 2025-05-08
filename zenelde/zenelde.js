@@ -1182,5 +1182,6 @@ const listaT = [
 ["ZJL4UGSbeFg", "2025-03-14", "Shania Twain - Man I Feel Like A Woman"],
 ["sAgeeHaSf08", "2025-03-15", "Alanis Morissette - Joining You"],
 ["1VQ_3sBZEm0", "2025-05-06", "Foo Fighters - Learn To Fly"],
-["m6YfHLgXHp8", "2025-05-07", "Mr. Rick - Zárjon be a gyár"]
+["m6YfHLgXHp8", "2025-05-07", "Mr. Rick - Zárjon be a gyár"],
+["f4jiNcQ5410", "2025-03-08", "Barabás Lőrinc - Beauty"]
 ];
