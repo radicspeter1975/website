@@ -487,7 +487,7 @@ const listaT = [
 ["AkpEfTTWsUA", "2011-05-15", "Dolák-Saly Róbert - Szerelmi vallomás"],
 ["lo0_JsrWI_A", "2011-05-15", "Dolák Saly Róbert - A szél fú"],
 ["Vbz1XZ0S2UY", "2011-05-16", "Európa Kiadó - Toporzékolok a vágytól"],
-["aCnDFUGGJoc", "2011-05-17", "Fürgerókalábak - Britni Szpírsz"],
+["PdXxX0apSro", "2011-05-17", "Fürgerókalábak - Britni Szpírsz"],
 ["LOZuxwVk7TU", "2011-05-17", "Britney Spears - Toxic"],
 ["ZAyeVjnJg9E", "2011-05-17", "The Surfrajettes - Toxic #cover"],
 ["Akga75nN7hA", "2011-05-18", "Generál - Csöngess be hozzám jó barát"],
@@ -1182,5 +1182,7 @@ const listaT = [
 ["ZJL4UGSbeFg", "2025-03-14", "Shania Twain - Man I Feel Like A Woman"],
 ["sAgeeHaSf08", "2025-03-15", "Alanis Morissette - Joining You"],
 ["1VQ_3sBZEm0", "2025-05-06", "Foo Fighters - Learn To Fly"],
-["m6YfHLgXHp8", "2025-05-07", "Mr. Rick - Zárjon be a gyár"]
+["m6YfHLgXHp8", "2025-05-07", "Mr. Rick - Zárjon be a gyár"],
+["f4jiNcQ5410", "2025-05-08", "Barabás Lőrinc - Beauty"],
+["GJbpuSGSQZI", "2025-05-10", "Dido - This Land Is Mine"]
 ];
