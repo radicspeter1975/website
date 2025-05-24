@@ -1072,7 +1072,7 @@ const listaT = [
 ["SzTpfTJcF3Y", "2024-04-06", "URH - Vigyetek el!"],
 ["HH-IrhfS1VI", "2024-04-08", "L'art pour l'art - Ha nőt látok"],
 ["PIb6AZdTr-A", "2024-04-09", "Cyndi Lauper - Girls Just Want To Have Fun"],
-["GTfhr8XWdXo", "2024-04-09", "Weird Al Yankovic - Girls Just Wanna Have Lunch"],
+["GTfhr8XWdXo", "2024-04-09", "Weird Al Yankovic - Girls Just Wanna Have Lunch #parody"],
 ["VkPPS7c2_eg", "2024-04-10", "PG Csoport - A férfiak visszalőnek"],
 ["PMQLDunHnkU", "2024-04-11", "Vengaboys - 2 Brazil!"],
 ["QjL7D33xpS4", "2024-04-12", "Viagra Boys - Sports"],
@@ -1185,5 +1185,7 @@ const listaT = [
 ["m6YfHLgXHp8", "2025-05-07", "Mr. Rick - Zárjon be a gyár"],
 ["f4jiNcQ5410", "2025-05-08", "Barabás Lőrinc - Beauty"],
 ["GJbpuSGSQZI", "2025-05-10", "Dido - This Land Is Mine"],
-["7TwULx_wDiI", "2025-05-17", "The Shadows - Apache"]
+["7TwULx_wDiI", "2025-05-17", "The Shadows - Apache"],
+["hEcjgJSqSRU", "2025-05-24", "Weird Al Yankovic - The Saga Begins #parody"],
+["iX_TFkut1PM", "2025-05-24", "Don McLean - American Pie"]
 ];
