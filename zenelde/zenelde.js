@@ -1189,5 +1189,6 @@ const listaT = [
 ["hEcjgJSqSRU", "2025-05-24", "Weird Al Yankovic - The Saga Begins #parody"],
 ["iX_TFkut1PM", "2025-05-24", "Don McLean - American Pie"],
 ["Q6fkJY7hObY", "2025-05-25", "Irigy Hónaljmirigy - Ma van a szülinapom #parody"],
-["rHh6qI-S_Ww", "2025-05-25", "Alma Együttes - Ma van a szülinapom"]
+["rHh6qI-S_Ww", "2025-05-25", "Alma Együttes - Ma van a szülinapom"],
+["O4f59mAt4m4", "2025-05-26", "Kispál és a Borz - Kicsi Csillag"]
 ];
