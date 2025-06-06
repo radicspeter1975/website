@@ -1191,5 +1191,6 @@ const listaT = [
 ["Q6fkJY7hObY", "2025-05-25", "Irigy Hónaljmirigy - Ma van a szülinapom #parody"],
 ["rHh6qI-S_Ww", "2025-05-25", "Alma Együttes - Ma van a szülinapom"],
 ["O4f59mAt4m4", "2025-05-26", "Kispál és a Borz - Kicsi Csillag"],
-["_9BGLtqqkVI", "2025-06-05", "Weezer - Hash Pipe"]
+["_9BGLtqqkVI", "2025-06-05", "Weezer - Hash Pipe"],
+["WCuJE7x8eh4", "2025-06-06", "Bródy János - Filléres emlékeim"]
 ];
