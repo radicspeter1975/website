@@ -140,7 +140,7 @@ const listaT = [
 ["wEWn0aVcuSM", "2009-03-06", "Suede - Saturday Night"],
 ["fZFmaMbkUD4", "2009-03-07", "Green Day - Jesus of Suburbia"],
 ["FeU_qC5tBOE", "2009-03-08", "Manic Street Preachers - The Everlasting"],
-["vS5hkW0bwek", "2009-03-09", "Kistehén tánczenekar - Szia Zoli"],
+["vS5hkW0bwek", "2009-03-09", "Kistehén Tánczenekar - Szia Zoli"],
 ["eylHgDOdWlE", "2009-03-10", "Sziámi - Világegyetemista"],
 ["PXatLOWjr-k", "2009-03-11", "Travis - Why Does It Always Rain On Me"],
 ["5Mx68rBuDkU", "2009-03-12", "The Crybabies - Atomvillanás :)"],
