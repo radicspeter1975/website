@@ -1196,5 +1196,6 @@ const listaT = [
 ["Pgum6OT_VH8", "2025-06-07", "Muse - Starlight"],
 ["skYZziNZW_w", "2025-06-10", "Tanya Donelly - Pretty Deep"],
 ["Poii8JAbtng", "2025-06-13", "Jeff Wayne's Musical Version Of The War Of The Worlds - The Eve of the War"],
-["Q_WHGV5bejk", "2025-06-19", "Sepultura - Territory"]
+["Q_WHGV5bejk", "2025-06-19", "Sepultura - Territory"],
+["C7Olq0h1n5w", "2025-06-28", "Pa-dö-dö - Szédült éjjel"]
 ];
