@@ -391,7 +391,7 @@ const listaT = [
 ["ZHd5f_HkT44", "2010-10-01", "Nine Inch Nails - Hurt"],
 ["plBMcpRRrVw", "2010-10-03", "Nirvana - Even In His Youth"],
 ["y66Bo4UcF04", "2010-10-15", "Dolák-Saly Róbert - Vasmacsó"],
-["hO2wA0Te0wM", "2010-11-05", "EMINEM - Lose Yourself"],
+["hO2wA0Te0wM", "2010-11-05", "Eminem - Lose Yourself"],
 ["Z2LC1xrdOaM", "2010-11-06", "Green Day - Whatsername"],
 ["Hu1J03v-nY4", "2010-11-08", "Nirvana - Stain"],
 ["QgS252XT_Ts", "2010-11-15", "Kraftwerk - The Model"],
@@ -1197,5 +1197,6 @@ const listaT = [
 ["skYZziNZW_w", "2025-06-10", "Tanya Donelly - Pretty Deep"],
 ["Poii8JAbtng", "2025-06-13", "Jeff Wayne's Musical Version Of The War Of The Worlds - The Eve of the War"],
 ["Q_WHGV5bejk", "2025-06-19", "Sepultura - Territory"],
-["C7Olq0h1n5w", "2025-06-28", "Pa-dö-dö - Szédült éjjel"]
+["C7Olq0h1n5w", "2025-06-28", "Pa-dö-dö - Szédült éjjel"],
+["P05bTId-92A", "2025-07-18", "Eminem - Business"]
 ];
