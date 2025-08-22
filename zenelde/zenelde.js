@@ -100,7 +100,7 @@ const listaT = [
 ["aowSGxim_O8", "2008-11-30", "Tom Petty and The Heartbreakers - Mary Jane's Last Dance"],
 ["7wRHBLwpASw", "2008-12-01", "ZZ Top - Sharp Dressed Man"],
 ["3O3Fbauhyd0", "2008-12-02", "Lisa Loeb And Nine Stories - Stay"],
-["SAxPLSvvbXY", "2008-12-03", "Offspring - She's Got Issues"],
+["SAxPLSvvbXY", "2008-12-03", "The Offspring - She's Got Issues"],
 ["yHjjqYQpBQg", "2008-12-04", "Beck - Pay No Mind"],
 ["JU5LMG3WFBw", "2008-12-05", "Queen - Hammer To Fall"],
 ["MtLEDzHGGIA", "2008-12-06", "Zámbó Jimmy - Füstös éjszaka blues"],
@@ -261,7 +261,7 @@ const listaT = [
 ["fr2T-Rcgq1c", "2009-09-14", "Green Day - Geek Stink Breath"],
 ["BKNr9JFgyxI", "2009-09-15", "30Y - Felhő"],
 ["AZBRshL7nNg", "2009-09-16", "Republic - Madárjós vakáción"],
-["Mf6ioDwqsn8", "2009-09-17", "Amorf ördögök - Látom magam a poharamba"],
+["Mf6ioDwqsn8", "2009-09-17", "Amorf Ördögök - Látom magam a poharamba"],
 ["xqovGKdgAXY", "2009-09-18", "Suede - Beautiful Ones"],
 ["PQHPYelqr0E", "2009-09-19", "Weezer - Pork And Beans"],
 ["jnZaVrAoJqo", "2009-09-20", "KFT - Balatoni nyár"],
@@ -1202,5 +1202,6 @@ const listaT = [
 ["VEAuMiKqP-4", "2025-07-24", "Depeche Mode - Behind the Wheel"],
 ["m_N93cxyg8Q", "2025-07-25", "Hinds - Just Like Kids (Miau)"],
 ["iRYvuS9OxdA", "2025-07-29", "Amy Macdonald - This is the Life"],
-["2H5uWRjFsGc", "2025-08-07", "Chumbawamba - Tubthumping"]
+["2H5uWRjFsGc", "2025-08-07", "Chumbawamba - Tubthumping"],
+["55QhDqR794I", "2025-08-22", "Pond - Spokes"]
 ];
