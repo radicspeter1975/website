@@ -1205,5 +1205,6 @@ const listaT = [
 ["2H5uWRjFsGc", "2025-08-07", "Chumbawamba - Tubthumping"],
 ["55QhDqR794I", "2025-08-22", "Pond - Spokes"],
 ["dSy2DcATYUo", "2025-08-25", "Mo-Do - Eins Zwei Polizei"],
-["75wjSlubTgo", "2025-08-30", "The Offspring - Nitro (Youth Energy)"]
+["75wjSlubTgo", "2025-08-30", "The Offspring - Nitro (Youth Energy)"],
+["ALPFp6nBktA", "2025-09-10", "Ganxsta Zolee és a Kartel - Izzad A Tököm"]
 ];
