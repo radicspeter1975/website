@@ -1209,5 +1209,6 @@ const listaT = [
 ["ALPFp6nBktA", "2025-09-10", "Ganxsta Zolee és a Kartel - Izzad A Tököm"],
 ["Uyen5gPGEC8", "2025-09-11", "Nirvana - Very Ape"],
 ["AaToSj0aYE4", "2025-09-12", "The Smashed Avocados - My Name is Jim"],
-["8N2k-gv6xNE", "2025-09-14", "Shania Twain - Any Man Of Mine"]
+["8N2k-gv6xNE", "2025-09-14", "Shania Twain - Any Man Of Mine"],
+["3ppiohVRZ0s", "2025-09-17", "Garbage - Queer"]
 ];
