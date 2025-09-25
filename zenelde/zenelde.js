@@ -1213,5 +1213,7 @@ const listaT = [
 ["3ppiohVRZ0s", "2025-09-17", "Garbage - Queer"],
 ["3wtbPPAZZx8", "2025-09-18", "Cypress Hill - Tequila Sunrise"],
 ["Rbm6GXllBiw", "2025-09-19", "Guns'N'Roses - Paradise City"],
-["EFtQMPFyOZg", "2025-09-19", "Rostás Szabika - Vettem a Piacon #mashup"]
+["EFtQMPFyOZg", "2025-09-19", "Rostás Szabika - Vettem a Piacon #mashup"],
+["GY5y4Rp3tU8", "2025-09-25", "Isaac Albéniz - Asturias (guitar) #classical"],
+["6OU0q6eA4ec", "2025-09-25", "Isaac Albéniz - Asturias (piano) #classical"]
 ];
