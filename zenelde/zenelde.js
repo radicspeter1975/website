@@ -95,7 +95,7 @@ const listaT = [
 ["VdQY7BusJNU", "2008-11-25", "Cyndi Lauper - Time After Time"],
 ["oXqPjx94YMg", "2008-11-26", "k.d. lang - constant craving"],
 ["j-fWDrZSiZs", "2008-11-27", "Dido - White flag"],
-["LLs-JP5FGAg", "2008-11-28", "Skunk Anansie - Hedonism"],
+["pOEcfOPRay8", "2008-11-28", "Skunk Anansie - Hedonism"],
 ["wjAVAg8bM7I", "2008-11-29", "Kováts Kriszta - A híd felé"],
 ["aowSGxim_O8", "2008-11-30", "Tom Petty and The Heartbreakers - Mary Jane's Last Dance"],
 ["7wRHBLwpASw", "2008-12-01", "ZZ Top - Sharp Dressed Man"],
@@ -1214,6 +1214,6 @@ const listaT = [
 ["3wtbPPAZZx8", "2025-09-18", "Cypress Hill - Tequila Sunrise"],
 ["Rbm6GXllBiw", "2025-09-19", "Guns'N'Roses - Paradise City"],
 ["EFtQMPFyOZg", "2025-09-19", "Rostás Szabika - Vettem a Piacon #mashup"],
-["GY5y4Rp3tU8", "2025-09-25", "Isaac Albéniz - Asturias (guitar) #classical"],
+["bCA2sql0dvQ", "2025-09-25", "Isaac Albéniz - Asturias (guitar) #classical"],
 ["6OU0q6eA4ec", "2025-09-25", "Isaac Albéniz - Asturias (piano) #classical"]
 ];
