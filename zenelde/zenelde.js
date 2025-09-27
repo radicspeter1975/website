@@ -1166,7 +1166,7 @@ const listaT = [
 ["j8bzvyEMdQc", "2025-02-14", "Koncz Zsuzsa - Rohan az idő"],
 ["TGwZ7MNtBFU", "2025-02-15", "Gwen Stefani - Cool"],
 ["HFOSUQZrrHs", "2025-02-16", "Stiltskin - Inside"],
-["V9NFs7qPwuk", "2025-02-18", "Green Day -  American Idiot"],
+["V9NFs7qPwuk", "2025-02-18", "Green Day - American Idiot"],
 ["IkMFLUXTEwM", "2025-02-21", "Tommy James and the Shondell - I Think We're Alone Now"],
 ["w6Q3mHyzn78", "2025-02-21", "Tiffany - I Think We're Alone Now"],
 ["2QnHjkBD_YI", "2025-02-21", "Billie Joe Armstrong - I Think We're Alone Now"],
@@ -1215,5 +1215,6 @@ const listaT = [
 ["Rbm6GXllBiw", "2025-09-19", "Guns'N'Roses - Paradise City"],
 ["EFtQMPFyOZg", "2025-09-19", "Rostás Szabika - Vettem a Piacon #mashup"],
 ["bCA2sql0dvQ", "2025-09-25", "Isaac Albéniz - Asturias (guitar) #classical"],
-["6OU0q6eA4ec", "2025-09-25", "Isaac Albéniz - Asturias (piano) #classical"]
+["6OU0q6eA4ec", "2025-09-25", "Isaac Albéniz - Asturias (piano) #classical"],
+["vf4UhPuwoGE", "2025-09-27", "Queen - Gimme The Prize"]
 ];
