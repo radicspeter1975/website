@@ -880,7 +880,7 @@ const listaT = [
 ["DaHzIGK_vWs", "2021-09-28", "Pixies - Hear Me Out"],
 ["diqsXqfQYSU", "2021-10-06", "Belga - A gyaloglás vége"],
 ["K46nATK_eC0", "2021-10-22", "88-as csoport - Szálasi monológ"],
-["NuRKLePajII", "2021-10-23", "Grandaddy - Laughing Stock"],
+["MSHtDVTjNkw", "2021-10-23", "Grandaddy - Laughing Stock"],
 ["88sARuFu-tc", "2021-10-24", "Bronski Beat - Smalltown Boy"],
 ["AB1fHIj-xWc", "2021-10-25", "Harmath, Márkus - Stux, maga vérbeli párizsi lett"],
 ["OrrtIm4UP7c", "2021-10-26", "Fürgerókalábak - A bal herém"],
