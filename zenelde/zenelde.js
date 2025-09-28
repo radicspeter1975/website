@@ -1216,5 +1216,6 @@ const listaT = [
 ["EFtQMPFyOZg", "2025-09-19", "Rostás Szabika - Vettem a Piacon #mashup"],
 ["bCA2sql0dvQ", "2025-09-25", "Isaac Albéniz - Asturias (guitar) #classical"],
 ["6OU0q6eA4ec", "2025-09-25", "Isaac Albéniz - Asturias (piano) #classical"],
-["vf4UhPuwoGE", "2025-09-27", "Queen - Gimme The Prize"]
+["vf4UhPuwoGE", "2025-09-27", "Queen - Gimme The Prize"],
+["OR7R9Kuw2fY", "2025-09-28", "Green Day - Welcome To Paradise"]
 ];
