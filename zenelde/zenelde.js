@@ -97,7 +97,7 @@ const listaT = [
 ["j-fWDrZSiZs", "2008-11-27", "Dido - White flag"],
 ["pOEcfOPRay8", "2008-11-28", "Skunk Anansie - Hedonism"],
 ["wjAVAg8bM7I", "2008-11-29", "Kováts Kriszta - A híd felé"],
-["aowSGxim_O8", "2008-11-30", "Tom Petty and The Heartbreakers - Mary Jane's Last Dance"],
+["aowSGxim_O8", "2008-11-30", "Tom Petty And The Heartbreakers - Mary Jane's Last Dance"],
 ["7wRHBLwpASw", "2008-12-01", "ZZ Top - Sharp Dressed Man"],
 ["3O3Fbauhyd0", "2008-12-02", "Lisa Loeb And Nine Stories - Stay"],
 ["SAxPLSvvbXY", "2008-12-03", "The Offspring - She's Got Issues"],
@@ -1219,5 +1219,6 @@ const listaT = [
 ["6OU0q6eA4ec", "2025-09-25", "Isaac Albéniz - Asturias (piano) #classical"],
 ["vf4UhPuwoGE", "2025-09-27", "Queen - Gimme The Prize"],
 ["OR7R9Kuw2fY", "2025-09-28", "Green Day - Welcome To Paradise"],
-["1wWjrURRoR8", "2025-10-01", "Bikini - Ügyetlen szerelem"]
+["1wWjrURRoR8", "2025-10-01", "Bikini - Ügyetlen szerelem"],
+["s5BJXwNeKsQ", "2025-10-03", "Tom Petty And The Heartbreakers - Learning To Fly"]
 ];
