@@ -818,6 +818,8 @@ const listaT = [
 ["T50uRnIOu7c", "2018-04-09", "Beatrice - Nagyvárosi farkas"],
 ["1FgLiJx7bPM", "2018-06-23", "Edda - Az Ítélet"],
 ["EkwD5rQ-_d4", "2018-08-07", "The Toadies - Possum Kingdom"],
+["s8DSIB4nB3U", "2018-08-07", "The Toadies - Possum Kingdom (acoustic)"],
+["eRmoD1mhdvU", "2018-08-07", "The Toadies - Possum Kingdom (live)"],
 ["A8MO7fkZc5o", "2018-09-21", "Metallica - Sad But True"],
 ["v0CYB5V9e64", "2018-12-24", "Hole - Malibu"],
 ["W0YeGv5xHUU", "2018-12-25", "Crash Test Dummies - Afternoons and Coffeespoons"],
