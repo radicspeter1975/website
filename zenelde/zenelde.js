@@ -547,7 +547,6 @@ const listaT = [
 ["p8r90_oLlKw", "2011-05-28", "Quimby - Libidó"],
 ["Svb6niCqZGc", "2011-05-29", "Rolls Frakció - Adj helyet magad mellett"],
 ["U7vNbrqb3dU", "2011-05-30", "Sub Bass Monster - Gyulafirátót"],
-["U7vNbrqb3dU", "2011-05-30", "Sub Bass Monster - Gyulafirátót"],
 ["yZqwikXR_t8", "2011-05-30", "Irigy Hónaljmirigy - Tojok én rátok #parody"],
 ["wIVFuzKCbwc", "2011-05-31", "Sziámi - Elölről"],
 ["Ale3epLt468", "2011-06-01", "Tereskova - Száll az űrhajó"],
