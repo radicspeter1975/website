@@ -82,7 +82,7 @@ const listaT = [
 ["SiUTfk3pkII", "2008-11-03", "Everlast - Black Jesus"],
 ["_ivt_N2Zcts", "2008-11-04", "Meredith Brooks - Bitch"],
 ["pkZbvV5Nzw0", "2008-11-05", "Megadeth - Symphony of Destruction"],
-["pZ9KfKx8PmM", "2008-11-06", "bran van 3000 - Drinkin in LA"],
+["OQsQZvsR_QI", "2008-11-06", "bran van 3000 - Drinkin in LA"],
 ["QYpoCzkHh0s", "2008-11-07", "Apollo 440 - Lost in Space"],
 ["Ugut2uYScW0", "2008-11-08", "Üllői Úti Fuck - Esküvő (akusztikus)"],
 ["oxjFlOEaiRg", "2008-11-08", "Üllői Úti Fuck - Esküvő"],
