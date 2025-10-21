@@ -1248,7 +1248,7 @@ const listaT = [
 ["I2n3vVrBvQs", "2024-12-06", "Catatonia - Gyda Gwen"],
 ["9TAgGrGnKfk", "2024-12-08", "Üllői Úti Fuck - Télapó"],
 ["XZVpR3Pk-r8", "2024-12-11", "Soft Cell - Tainted Love"],
-["oIaEjX_RMQU", "2024-12-11", "Marilyn Manson - Tainted Love #cover"],
+["VlX6CvWT97s", "2024-12-11", "Marilyn Manson - Tainted Love #cover"],
 ["8PXjkGOtVFM", "2024-12-16", "Bush - Straight, No Chaser"],
 ["cxG-kOTMgaA", "2024-12-24", "Chopin - Waltz Op.69 No.2 #classical"],
 ["_edkn7Qd9Zg", "2024-12-26", "The Corrs - Toss The Feathers"],
