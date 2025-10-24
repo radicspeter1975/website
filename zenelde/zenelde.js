@@ -1073,7 +1073,6 @@ const listaT = [
 ["h-WPexVEujg", "2023-01-01", "A-ha - Crying in the Rain"],
 ["TlQhpeL5Ru8", "2023-01-02", "Sziámi - Száz bolha (Moziklip)"],
 ["CEjU9KVABao", "2023-01-03", "Queen - Breakthru"],
-["KwtITM_xeqU", "2023-01-03", "Queen - Breakthru (akkordok)"],
 ["ujhj7mfvIQk", "2023-01-04", "Zombie Nation - Kernkraft 400"],
 ["qAi9-LRtYSU", "2023-01-05", "Grant Lee Buffalo - Fuzzy"],
 ["yl10kS0DlWY", "2023-01-06", "Bush - Mouth"],
