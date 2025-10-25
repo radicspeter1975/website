@@ -1003,6 +1003,7 @@ const listaT = [
 ["KdU9-RC_k8U", "2022-08-09", "30Y - Öltöztetnéd Megint"],
 ["Qq4j1LtCdww", "2022-08-14", "Alice Cooper - Poison"],
 ["a4eav7dFvc8", "2022-08-23", "The Prodigy - Out Of Space"],
+["Tl7VfKYbRjg", "2022-08-23", "The Prodigy - Smack My Bitch Up"],
 ["ZXtSrBitk7o", "2022-08-26", "Suzanne Vega - When Heroes Go Down"],
 ["aYZC1WOqjSM", "2022-08-30", "Amorf Ördögök - Delikát bisztró"],
 ["tsznw_eXpEs", "2022-09-05", "Emil.RuleZ! - Hello Tourist!"],
@@ -1328,5 +1329,6 @@ const listaT = [
 ["1wWjrURRoR8", "2025-10-01", "Bikini - Ügyetlen szerelem"],
 ["s5BJXwNeKsQ", "2025-10-03", "Tom Petty And The Heartbreakers - Learning To Fly"],
 ["nVhNCTH8pDs", "2025-10-10", "Pink Floyd - Learning To Fly"],
-["SF4tNE4kep8", "2025-10-16", "Hobo Blues Band - Fut a nyúl a mezőn (Vadászat)"]
+["SF4tNE4kep8", "2025-10-16", "Hobo Blues Band - Fut a nyúl a mezőn (Vadászat)"],
+["7MQaZgfqOe4", "2025-10-25", "30Y - Bogozd ki"]
 ];
