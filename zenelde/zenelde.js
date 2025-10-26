@@ -1330,5 +1330,6 @@ const listaT = [
 ["s5BJXwNeKsQ", "2025-10-03", "Tom Petty And The Heartbreakers - Learning To Fly"],
 ["nVhNCTH8pDs", "2025-10-10", "Pink Floyd - Learning To Fly"],
 ["SF4tNE4kep8", "2025-10-16", "Hobo Blues Band - Fut a nyúl a mezőn (Vadászat)"],
-["7MQaZgfqOe4", "2025-10-25", "30Y - Bogozd ki"]
+["7MQaZgfqOe4", "2025-10-25", "30Y - Bogozd ki"],
+["5anLPw0Efmo", "2025-10-26", "Evanescence - My Immortal"]
 ];
