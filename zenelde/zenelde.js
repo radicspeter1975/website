@@ -1333,5 +1333,6 @@ const listaT = [
 ["7MQaZgfqOe4", "2025-10-25", "30Y - Bogozd ki"],
 ["5anLPw0Efmo", "2025-10-26", "Evanescence - My Immortal"],
 ["zO6D_BAuYCI", "2025-10-27", "Queen - Crazy Little Thing Called Love"],
-["hakXug2FNkc", "2025-11-14", "Chris Rea - Auberge"]
+["hakXug2FNkc", "2025-11-14", "Chris Rea - Auberge"],
+["DgzKFdTQHS8", "2025-11-17", "Hobo Blues Band - Moszkva tér blues"]
 ];
