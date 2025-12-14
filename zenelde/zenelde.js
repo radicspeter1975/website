@@ -1338,5 +1338,7 @@ const listaT = [
 ["KTG1oW7lucs", "2025-11-29", "Sziámi - Elmaradott ország"],
 ["2L2n3T9IZeM", "2025-11-30", "Edda - Ahogy élsz"],
 ["IQfwgzoiq4c", "2025-12-04", "Beck - Sexx Laws"],
-["FDQc85ZxQ3o", "2025-12-10", "Padlás - Enyém a pálya"]
+["FDQc85ZxQ3o", "2025-12-10", "Padlás - Enyém a pálya"],
+["jJEAMXZcCCs", "2025-12-11", "Kispál és a Borz - Adok egy kulcsot"],
+["7wfYIMyS_dI", "2025-12-13", "Enya - Only Time"]
 ];
