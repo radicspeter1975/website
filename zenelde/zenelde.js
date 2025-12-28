@@ -1340,5 +1340,8 @@ const listaT = [
 ["IQfwgzoiq4c", "2025-12-04", "Beck - Sexx Laws"],
 ["FDQc85ZxQ3o", "2025-12-10", "Padlás - Enyém a pálya"],
 ["jJEAMXZcCCs", "2025-12-11", "Kispál és a Borz - Adok egy kulcsot"],
-["7wfYIMyS_dI", "2025-12-13", "Enya - Only Time"]
+["7wfYIMyS_dI", "2025-12-13", "Enya - Only Time"],
+["wPVLLqQWagw", "2025-12-20", "Aurora - Viszlát Iván"],
+["QaAvShKyRj8", "2025-12-21", "dEUS - The Ideal Crash"],
+["2UDSysiT0N8", "2025-12-24", "Spenót - Lenin körút"]
 ];
