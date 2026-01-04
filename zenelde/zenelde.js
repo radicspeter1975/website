@@ -639,7 +639,7 @@ const listaT = [
 ["zakKvbIQ28o", "2012-01-29", "AC/DC - You Shook Me All Night Long (live)"],
 ["xc1Uld0k4W4", "2012-02-24", "Green Day - Waiting"],
 ["8FIBPKRV3kk", "2012-02-25", "Bush - Swallowed"],
-["eFjjO_lhf9c", "2012-02-26", "Bryan Adams - Summer Of '69"],
+["9f06QZCVUHg", "2012-02-26", "Bryan Adams - Summer Of '69"],
 ["FBaCxYWHdP0", "2012-02-27", "Kispál és a Borz - Naphoz holddal (live)"],
 ["XidzjPxD7V8", "2012-02-27", "Kispál és a Borz - Naphoz holddal"],
 ["u5-xWUv0imA", "2012-02-29", "Aurora - Nem vagyok ostoba"],
@@ -834,7 +834,7 @@ const listaT = [
 ["A8MO7fkZc5o", "2018-09-21", "Metallica - Sad But True"],
 ["v0CYB5V9e64", "2018-12-24", "Hole - Malibu"],
 ["W0YeGv5xHUU", "2018-12-25", "Crash Test Dummies - Afternoons and Coffeespoons"],
-["ZMqPlQgHww8", "2018-12-26", "The Cure - Killing an Arab"],
+["wPU844FwuVw", "2018-12-26", "The Cure - Killing an Arab"],
 ["jpEcqeKAzMw", "2018-12-26", "A közöny #film"],
 ["xT6oZGThwis", "2018-12-27", "The Breeders - Safari"],
 ["FiUNDeuBbi8", "2018-12-28", "Pixies - Gouge Away (live2)"],
@@ -1343,5 +1343,9 @@ const listaT = [
 ["7wfYIMyS_dI", "2025-12-13", "Enya - Only Time"],
 ["wPVLLqQWagw", "2025-12-20", "Aurora - Viszlát Iván"],
 ["QaAvShKyRj8", "2025-12-21", "dEUS - The Ideal Crash"],
-["2UDSysiT0N8", "2025-12-24", "Spenót - Lenin körút"]
+["2UDSysiT0N8", "2025-12-24", "Spenót - Lenin körút"],
+["uO7wahu6FjI", "2025-12-30", "Zebulon - Full Ceutanázia"],
+["EHevVwni3nQ", "2025-12-31", "Animal Cannibals - Hazafelé az út veszélyes"],
+["TU3-lS_Gryk", "2026-01-03", "Blondie - Dreaming"],
+["oaQZy5sDZz4", "2026-01-04", "Pokolgép - Éjféli harang"]
 ];
