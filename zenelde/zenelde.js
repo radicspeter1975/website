@@ -834,8 +834,8 @@ const listaT = [
 ["A8MO7fkZc5o", "2018-09-21", "Metallica - Sad But True"],
 ["v0CYB5V9e64", "2018-12-24", "Hole - Malibu"],
 ["W0YeGv5xHUU", "2018-12-25", "Crash Test Dummies - Afternoons and Coffeespoons"],
-["wPU844FwuVw", "2018-12-26", "The Cure - Killing an Arab"],
 ["jpEcqeKAzMw", "2018-12-26", "A közöny #film"],
+["RFIwEQkH7sg", "2018-12-26", "The Cure - Killing an Arab"],
 ["xT6oZGThwis", "2018-12-27", "The Breeders - Safari"],
 ["FiUNDeuBbi8", "2018-12-28", "Pixies - Gouge Away (live2)"],
 ["7aSbf406xaw", "2018-12-28", "Pixies - Gouge Away (live)"],
@@ -1347,5 +1347,6 @@ const listaT = [
 ["uO7wahu6FjI", "2025-12-30", "Zebulon - Full Ceutanázia"],
 ["EHevVwni3nQ", "2025-12-31", "Animal Cannibals - Hazafelé az út veszélyes"],
 ["TU3-lS_Gryk", "2026-01-03", "Blondie - Dreaming"],
-["oaQZy5sDZz4", "2026-01-04", "Pokolgép - Éjféli harang"]
+["oaQZy5sDZz4", "2026-01-04", "Pokolgép - Éjféli harang"],
+["iZ9vkd7Rp-g", "2026-01-16", "Emilíana Torrini - Jungle Drum"]
 ];
