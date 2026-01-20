@@ -1348,5 +1348,6 @@ const listaT = [
 ["EHevVwni3nQ", "2025-12-31", "Animal Cannibals - Hazafelé az út veszélyes"],
 ["TU3-lS_Gryk", "2026-01-03", "Blondie - Dreaming"],
 ["oaQZy5sDZz4", "2026-01-04", "Pokolgép - Éjféli harang"],
-["iZ9vkd7Rp-g", "2026-01-16", "Emilíana Torrini - Jungle Drum"]
+["iZ9vkd7Rp-g", "2026-01-16", "Emilíana Torrini - Jungle Drum"],
+["58iOLcjxYiE", "2026-01-20", "Bush - Superman"]
 ];
