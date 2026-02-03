@@ -582,7 +582,7 @@ const listaT = [
 ["SSbBvKaM6sk", "2011-07-08", "Blur - Song 2"],
 ["UxjMUZ0gfUs", "2011-07-09", "Kispál és a Borz - Dal poharakról"],
 ["Lzet8j0To9E", "2011-07-10", "Liquido - Doubledecker"],
-["UnhTYvaJlu0", "2011-07-10", "Liquido - Doubledecker (radio)"],
+["ouDHXcbNhQo", "2011-07-10", "Liquido - Doubledecker (album)"],
 ["pkr8H1PfYZ0", "2011-07-13", "Pál Utcai Fiúk - Nehéz idők"],
 ["J0Q0O2DVyUM", "2011-07-14", "Rózsaszín pitbull - Egyél, igyál, szaporodj!"],
 ["2dH289KxkGw", "2011-07-17", "Alanis Morissette - Hands Clean"],
