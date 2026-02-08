@@ -1351,5 +1351,7 @@ const listaT = [
 ["iZ9vkd7Rp-g", "2026-01-16", "Emilíana Torrini - Jungle Drum"],
 ["58iOLcjxYiE", "2026-01-20", "Bush - Superman"],
 ["7KIHvuMl4Kk", "2026-01-24", "The Stranglers - Golden Brown"],
-["rCiARybYLkg", "2026-02-04", "Kispál és a Borz - Német Mérnökének"]
+["rCiARybYLkg", "2026-02-04", "Kispál és a Borz - Német Mérnökének"],
+["PcVd7LXxXN0", "2026-02-05", "Solymos Tóni - A harmónikás"],
+["umZR8c-sgMM", "2026-02-05", "Irigy Hónaljmirigy - Bevallom neked Mónikám #parody"]
 ];
