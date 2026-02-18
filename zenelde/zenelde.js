@@ -1353,5 +1353,8 @@ const listaT = [
 ["7KIHvuMl4Kk", "2026-01-24", "The Stranglers - Golden Brown"],
 ["rCiARybYLkg", "2026-02-04", "Kispál és a Borz - Német Mérnökének"],
 ["PcVd7LXxXN0", "2026-02-05", "Solymos Tóni - A harmónikás"],
-["umZR8c-sgMM", "2026-02-05", "Irigy Hónaljmirigy - Bevallom neked Mónikám #parody"]
+["umZR8c-sgMM", "2026-02-05", "Irigy Hónaljmirigy - Bevallom neked Mónikám #parody"],
+["VjB9R0EG7xs", "2026-02-18", "Bolland and Bolland - You're In The Army Now"],
+["EIxsPBbZ_b8", "2026-02-18", "Status Quo - In The Army Now #cover"],
+["sJY1ob1Nsb8", "2026-02-18", "Bikini - Nehéz a dolga"]
 ];
