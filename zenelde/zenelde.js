@@ -240,7 +240,7 @@ const listaT = [
 ["OveCLvwDqrM", "2009-08-08", "Jeff Wayne's Musical Version Of The War Of The Worlds - Dead London"],
 ["1rPe0BtYvTA", "2009-08-09", "Stereophonics - Have A Nice Day"],
 ["OrrE5bCA5lg", "2009-08-10", "Soul Asylum - Somebody To Shove"],
-["fFjtxDfrjB0", "2009-08-11", "Jean Michel Jarre - Equinoxe Part 1"],
+["pgxgMnIZXaU", "2009-08-11", "Jean Michel Jarre - Equinoxe Part 1"],
 ["ymdssZOAx3Q", "2009-08-12", "Laid Back - BakerMan"],
 ["e-mTMa4Z1ok", "2009-08-13", "Bush - Swim"],
 ["lcrkIjFVQ0Q", "2009-08-14", "Hobo Blues Band - A hetedik"],
@@ -1356,5 +1356,9 @@ const listaT = [
 ["umZR8c-sgMM", "2026-02-05", "Irigy Hónaljmirigy - Bevallom neked Mónikám #parody"],
 ["VjB9R0EG7xs", "2026-02-18", "Bolland and Bolland - You're In The Army Now"],
 ["EIxsPBbZ_b8", "2026-02-18", "Status Quo - In The Army Now #cover"],
-["sJY1ob1Nsb8", "2026-02-18", "Bikini - Nehéz a dolga"]
+["sJY1ob1Nsb8", "2026-02-18", "Bikini - Nehéz a dolga"],
+["FOdcUI7Gv4w", "2026-02-25", "Bikini - Csak dolgozni ne kelljen"],
+["T48lWB2jPs8", "2026-02-26", "Kontroll Csoport - Nem én vagyok"],
+["iRVtFcYDSqs", "2026-02-27", "Aurora - Egy kis anarchia"],
+["pUP1AK7Vxjk", "2026-02-28", "Bush - Bonedriven"]
 ];
