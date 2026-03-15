@@ -411,7 +411,7 @@ const listaT = [
 ["sX3ve_1vRA8", "2010-07-10", "Green Day - Letterbomb"],
 ["2nQDJG4YETQ", "2010-07-10", "Green Day - Letterbomb (live)"],
 ["F_HoMkkRHv8", "2010-07-23", "Cake - The Distance"],
-["dvaexozwYFg", "2010-07-24", "Takáts Tamás DBB - Megöl a vágy"],
+["dvaexozwYFg", "2010-07-24", "Takáts Tamás Dirty Blues Band - Megöl a vágy"],
 ["gVT_3PEgDIM", "2010-08-08", "Placebo - Slave To The Wage"],
 ["B32yjbCSVpU", "2010-08-09", "Ugly Kid Joe - Cats In The Cradle"],
 ["na7A3-UCCYE", "2010-08-23", "Sex Pistols - Anarchy in the UK"],
@@ -1362,5 +1362,8 @@ const listaT = [
 ["iRVtFcYDSqs", "2026-02-27", "Aurora - Egy kis anarchia"],
 ["pUP1AK7Vxjk", "2026-02-28", "Bush - Bonedriven"],
 ["_85qm4L3PeM", "2026-03-09", "Catatonia - For Tinkerbell"],
-["cZl9krWNb74", "2026-03-10", "Violent Femmes - Used To Be"]
+["cZl9krWNb74", "2026-03-10", "Violent Femmes - Used To Be"],
+["_cn5gZB8qFE", "2026-03-12", "Takáts Tamás Dirty Blues Band - Indulok tovább"],
+["xaz8ppQcOr8", "2026-03-13", "Kispál és a Borz - Vér És Bél"],
+["3Eqw541A3dI", "2026-03-14", "Hobo Blues Band - A remete története (Vadászat)"]
 ];
