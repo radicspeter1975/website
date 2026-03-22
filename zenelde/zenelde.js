@@ -426,7 +426,7 @@ const listaT = [
 ["ZHd5f_HkT44", "2010-10-01", "Nine Inch Nails - Hurt"],
 ["plBMcpRRrVw", "2010-10-03", "Nirvana - Even In His Youth"],
 ["y66Bo4UcF04", "2010-10-15", "Dolák-Saly Róbert - Vasmacsó"],
-["hO2wA0Te0wM", "2010-11-05", "Eminem - Lose Yourself"],
+["xFYQQPAOz7Y", "2010-11-05", "Eminem - Lose Yourself"],
 ["Z2LC1xrdOaM", "2010-11-06", "Green Day - Whatsername"],
 ["Y58gmP4mhUM", "2010-11-06", "Green Day - Whatsername (video)"],
 ["Hu1J03v-nY4", "2010-11-08", "Nirvana - Stain"],
@@ -1365,5 +1365,7 @@ const listaT = [
 ["cZl9krWNb74", "2026-03-10", "Violent Femmes - Used To Be"],
 ["_cn5gZB8qFE", "2026-03-12", "Takáts Tamás Dirty Blues Band - Indulok tovább"],
 ["xaz8ppQcOr8", "2026-03-13", "Kispál és a Borz - Vér És Bél"],
-["3Eqw541A3dI", "2026-03-14", "Hobo Blues Band - A remete története (Vadászat)"]
+["3Eqw541A3dI", "2026-03-14", "Hobo Blues Band - A remete története (Vadászat)"],
+["iI5fB-SSbeY", "2026-03-19", "Deák Bill Gyula - Középeurópai hobo blues III."],
+["ZCOSPtyZAPA", "2026-03-21", "The Cult - She Sells Sanctuary"]
 ];
