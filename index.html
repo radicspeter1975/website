@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="hu">
+<!-- 26.04.05 AI fetch version -->
+<head>
+  <title>zenélde</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Radics Péter zenélde oldala github és google sites">
+  <meta name="keywords" content="zenélde klippek kották">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="/website/favicon.ico">
+  <link rel="apple-touch-icon" href="/website/favicon.png">
+  <link rel="stylesheet" href="/website/css/w3.css">
+  <script src="/website/zenelde/zenelde.js?v=202604052139"></script>
+  <style>
+ pre { 
+      text-align: left; 
+      /* background: whitesmoke; */
+      white-space: pre-wrap;
+      word-break: break-all;
+    }
+    img  {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  @media screen and (max-width: 680px) {
+    iframe {
+        max-width: 100% !important;
+        width: auto !important;
+        height: auto !important;
+     }
+    }    
+</style>
+</head>
+
+<header>
+
+</header>
+
+<body class="w3-content">
+
+<!-- main -->
+<main class="w3-container w3-center">
+
+<h4 class="w3-blue w3-padding-small">
+    <label for="kertext">zenélde</label>
+    <input class="w3-margin w3-round" id="kertext" type="text" size="25" placeholder="kereső, -: minden, véletlen dal" onkeyup="keres()">
+    <button class="w3-button w3-yellow w3-hover-red w3-round-large w3-medium w3-padding-small" onclick="lasttwenty()">új dalok</button>
+    <button class="w3-button w3-yellow w3-hover-red w3-round-large w3-medium w3-padding-small" onclick="dal('vel')">véletlen dal</button>
+    <button class="w3-button w3-yellow w3-hover-red w3-round-large w3-medium w3-padding-small" id="favours" onclick="favourites()" disabled>kedvencek</button>
+    <button class="w3-button w3-red w3-hover-yellow w3-round-large w3-medium w3-padding-small" id="favbutton" title="add/remove favourites" onclick="addremfav()" disabled>+</button>
+</h4>
+<div id="htartalom">
+  post lekérése ...
+</div>
+
+<script>
+
+"use strict";
+
+// storage vars
+const storagearray = [];
+let storageready = false;
+
+// ekezetes rendezeshez
+const sortcollator = new Intl.Collator('hu', { numeric: true, sensitivity: 'base' });
+// html vars
+
+const favbtn = document.getElementById('favbutton');
+const hely = document.getElementById('htartalom');
+const html_path = "/website/zenelde/";
+
+// -------------------fgv-k----------------------
+
+// AI fetch
+async function html_fetch_return(file) {
+    let response = await fetch(file);
+
+    if (!response.ok) {
+        throw new Error("HTTP error: " + response.status);
+    }
+
+    return await response.text();
+}
+
+function kiir(tartalom){
+  hely.insertAdjacentHTML('beforeend', tartalom);
+  document.getElementById("kertext").value="";
+  document.title=document.getElementById("ptitle").innerText;
+  window.history.replaceState(null, '', "/website");
+
+  document.getElementById("kertext").blur();
+  if(storageready) updatefavbtn();
+}
+
+function dal(mit){
+    let videoid, webcim, title;
+    
+    switch (mit) {
+      case 'vel':
+        let i=Math.floor(Math.random() * darab);
+        [videoid, webcim, title] = listaT[i];
+        break;
+      case 'akt':
+        [videoid, webcim, title] = indexT[19];
+        break;
+      default:
+        let sor = listaT.findIndex((element) => element[1] == mit);
+        if(sor!=-1) [videoid, webcim, title] = listaT[sor];
+        else [videoid, webcim, title] = indexT[19];
+     }
+
+    // title sorok
+    let videolink=`<a id="currentlink" data-favour="${webcim+title}" target="_blank" href="https://www.youtube.com/watch?v=1775321437${videoid}">${webcim}</a>`;
+    hely.innerHTML= `<h4 class="w3-teal"><a id="ptitle" onclick="dal(webcim);return false" href="/website/index.html?${webcim}">${title}</a> ${videolink}</h4><br>`;
+    
+    // a tenyleges tartalom
+	html_fetch_return(html_path + webcim + '.html')
+		.then(kiir)
+		.catch(err => {
+			console.error(err);
+			kiir("<p>A tartalom nem elérhető.</p>");
+		});
+}
+
+function keres(){
+//const listaT = [ ["I9gU3L0J2ks", "2008-08-08", "K's Choice - Everything for free"], ...
+    const mitk = document.getElementById("kertext").value.toUpperCase();
+
+    document.title="keresés";
+    window.history.replaceState(null,'', "/website");
+    favbtn.disabled=true;
+    let talalat=0;
+    let sorok="";
+
+    if(mitk.length>0)
+    {
+     for (let i = 0; i < darab ; i++) 
+     {
+        let egylink = listaT[i][1];
+        let egytitle = listaT[i][2];
+        if(egytitle.toUpperCase().indexOf(mitk) > -1)
+          {
+              sorok+= '<a class="w3-hover-red" id="' + egylink +'" href="#" onclick="dal(this.id);return false;">' + egytitle  +'</a><br>';
+              talalat++;
+          }
+     }
+     switch(talalat) {
+      case 0:
+        hely.innerHTML="<b>erre nincs találat</b>";
+        break;
+      case 1:
+        dal(sorok.substr(28,10));
+        break;
+      default:
+        hely.innerHTML="<b>" + talalat + " találat: </b><br>" + sorok;
+     }
+
+    }
+    else
+     { 
+        let i=Math.floor(Math.random() * darab);
+        let egylink = listaT[i][1];
+        let egytitle = listaT[i][2];
+        hely.innerHTML="<b>keress valamire ... vagy nézd meg ezt:</b><br>" 
+        hely.innerHTML+= '<a class="w3-hover-red" id="' + egylink +'" href="#" onclick="dal(this.id);return false;">' + egylink + " "+ egytitle  +'</a><br><br>' ;
+     }
+}
+
+function lasttwenty(){
+// indexT-ben az utolso 20
+
+    document.title="új dalok";
+    window.history.replaceState(null, '', "/website");
+
+    favbtn.disabled=true;
+    let sorok="";
+    for (let i = 19; i >= 0 ; i--) 
+     {
+        const egylink = indexT[i][1];
+        const egytitle = indexT[i][2];
+        sorok+= '<a class="w3-hover-red" id="' + egylink +'" href="#" onclick="dal(this.id);return false;">' + egylink + " "+ egytitle +'<br>';
+        sorok+= `<img class="w3-image" src="https://img.youtube.com/vi/${indexT[i][0]}/mqdefault.jpg" alt="youtube preview"></a><br><br>`;
+        
+     }
+     hely.innerHTML="<b>utolsó 20 dal:</b><br>" + sorok;
+}
+
+function addremfav(){
+ // aktualis dal hozza vagy el, storage es array update!
+ 
+ let aktualiscim = document.getElementById("currentlink").dataset.favour;
+ if(storagearray.includes(aktualiscim)){
+     // torolni
+     storagearray.splice(storagearray.indexOf(aktualiscim), 1);
+ }
+ else  {
+    storagearray.push(aktualiscim);
+    storagearray.sort((a, b) => { return sortcollator.compare(a.substr(10), b.substr(10)); });
+  }
+ 
+ localStorage.setItem('favourites',storagearray.join('|'));
+ updatefavbtn();
+}
+
+function delfav(melyik){
+     storagearray.splice(storagearray.indexOf(melyik), 1);
+     favourites();
+}
+
+
+function favourites(){
+ // kedvenc lista kep+link? + egesz törlése addelement button?
+    let sorok;
+    document.title="kedvencek";
+    window.history.replaceState(null, '', "/website");
+    favbtn.disabled=true;
+    
+    if(storageready){
+       sorok = "<b>mentett kedvenceid:</b><br>";
+       for (const egysor of storagearray)
+          {
+            const egylink = egysor.substring(0,10);
+            const egytitle = egysor.substr(10);
+            sorok+= '<a class="w3-hover-red" id="' + egylink +'" href="#" onclick="dal(this.id);return false;">' + egytitle  +'</a> ';
+            sorok+= `<button id="${egysor}" class="w3-button w3-red w3-hover-yellow w3-round-large w3-medium w3-padding-small" onclick="delfav(this.id)">-</button><br>`;
+          }
+        if(storagearray.length) sorok+='<br><button class="w3-button w3-red w3-hover-yellow w3-round-large w3-medium w3-padding-small" onclick="clearallfav()">összes kedvenc törlése</button><br><br>';   
+    }
+    else 
+    {
+       sorok="<b>itt lehetnének a kedvenceid, ha a localStorage engedélyezett lenne...</b><br>";
+    }
+    hely.innerHTML=sorok;
+  
+}
+
+function clearallfav(){
+    if (window.confirm('tényleg töröljem mind?'))
+    {
+      localStorage.setItem('favourites','');
+      storagearray.length = 0;
+      favourites();
+    }
+
+}
+
+function updatefavbtn(){
+    // favbtn allapotanak +/- meghatarozasa
+    let aktualiscim = document.getElementById("currentlink").dataset.favour;
+    favbtn.disabled=false;
+    if(storagearray.includes(aktualiscim)) favbtn.innerHTML='-';
+    else favbtn.innerHTML='+';
+}
+
+//-------------------------------
+// start:
+
+//setup storage
+(function() 
+{
+  try {
+    let storagestring = localStorage.getItem('favourites');
+    storageready = true;
+    document.getElementById("favours").disabled = false;
+    document.getElementById("favbutton").disabled = false;
+    
+    if(storagestring === null)
+    {
+      localStorage.setItem('favourites','');
+    }
+    else 
+    {
+      if(storagestring) storagearray.push(...storagestring.split('|'));
+      }
+  } catch (error) {
+    alert('cookie/localStorage nincs engedélyezve');
+  };
+}
+());
+
+// utolso 20 bejegyzes helye
+const darab=listaT.length;
+const indexT=listaT.slice(listaT.length-20);
+
+//start
+(function() 
+{
+// abc szerint rendezes a keresohoz
+listaT.sort((a, b) => { return sortcollator.compare(a[2], b[2]); });
+
+let querystring=window.location.search.substring(1); //?vel, ??keresendo, ?20xx-xx-xx link
+
+if (querystring!='')
+ {
+  if(querystring.substr(0,1)=='?') // ?? search or links
+  {
+      querystring=querystring.substring(1); // search string
+      document.getElementById("kertext").value=querystring.replace('+',' ');
+      keres();
+  }
+  else {
+      switch (querystring) {
+        case 'uto':
+          lasttwenty();
+          break;
+        case 'fav':
+          favourites();
+          break;        
+        case 'vel':
+        case 'akt':
+        default:
+          dal(querystring);
+          break;
+       } 
+      }
+ }
+ else {
+  dal('akt');
+  }
+
+}
+());
+
+</script>
+
+</main>
+
+<footer class="w3-container w3-green w3-center">
+    <a class="w3-hover-black" target="_blank" href="https://github.com/radicspeter1975/website">github</a>
+</footer>
+</html>

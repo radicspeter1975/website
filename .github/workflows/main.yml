@@ -1,0 +1,48 @@
+name: Update Script (26.04.05)
+
+on:
+  push:
+    branches: [ main ]
+    # Csak akkor indul el, ha ebben a fájlban változás történik
+    paths:
+      - 'zenelde/zenelde.js'
+
+jobs:
+  patch-version:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # Fontos, hogy lehozzuk a teljes előzményt a biztonság kedvéért
+          fetch-depth: 0
+
+      - name: Update Index
+        run: |
+          VER=$(date +'%Y%m%d%H%M')
+          echo "NEW_VER=$VER" >> $GITHUB_ENV
+          echo "Új verzió generálva: $VER"
+          
+          # Megkeressük az összes index.html-t és frissítjük a verziót
+          find . -name "index.html" -exec sed -i "s|zenelde\.js?v=[^ \">]*|zenelde.js?v=$VER|g" {} +
+          
+          echo "Ellenőrzés:"
+          find . -name "index.html" -exec grep "zenelde.js" {} +
+
+      - name: Push Changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          
+          git add .
+          
+          # Ellenőrizzük, hogy van-e tényleges változás az index.html-ben
+          if git diff --cached --quiet; then
+            echo "Nincs változás az index.html fájlokban."
+          else
+            git commit -m "zenelde.js ($NEW_VER)"
+            git push origin main
+          fi
