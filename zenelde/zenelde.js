@@ -41,7 +41,7 @@ const listaT = [
 ["xv5TE1pfDMo", "2008-09-27", "Aurora - Előre kurvák, gengszterek #cover"],
 ["Vsa-PMfP2KM", "2008-09-27", "Aurora - Előre kurvák, gengszterek"],
 ["UGAOstUIhpU", "2008-09-28", "U2 - Stay"],
-["kRpZJ9EgJho", "2008-09-29", "NO DOUBT - Simple Kind of Life"],
+["kRpZJ9EgJho", "2008-09-29", "No Doubt - Simple Kind of Life"],
 ["CnQ8N1KacJc", "2008-09-30", "Green Day - Good Riddance (Time Of Your Life)"],
 ["8JGBNkLM9_8", "2008-10-01", "Sonic Youth - Bull in the heather"],
 ["LHQqqM5sr7g", "2008-10-02", "Weezer - The Sweater Song (Undone)"],
