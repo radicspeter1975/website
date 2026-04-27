@@ -1374,5 +1374,6 @@ const listaT = [
 ["tkYGLqfi-ZM", "2026-04-08", "Kovács Kati - Most kéne abbahagyni"],
 ["HkQyIh7c8p0", "2026-04-10", "Falco - Titanic"],
 ["Rk_sAHh9s08", "2026-04-12", "Enigma - Return To Innocence"],
-["Njgk82vB37I", "2026-04-24", "Bikini - Nagy barátkozások"]
+["Njgk82vB37I", "2026-04-24", "Bikini - Nagy barátkozások"],
+["_siJRgDlddY", "2026-04-27", "Alice In Chains - Nutshell"]
 ]; 
