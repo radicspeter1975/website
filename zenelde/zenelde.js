@@ -1377,5 +1377,6 @@ const listaT = [
 ["Njgk82vB37I", "2026-04-24", "Bikini - Nagy barátkozások"],
 ["_siJRgDlddY", "2026-04-27", "Alice In Chains - Nutshell"],
 ["DH1eq80zroE", "2026-04-30", "Cseh Tamás - A jobbik részem"],
-["g6U3VKOfdj0", "2026-05-01", "Nirvana - On A Plain"]
+["g6U3VKOfdj0", "2026-05-01", "Nirvana - On A Plain"],
+["zDcJXNkYtN8", "2026-05-02", "Bell Book And Candle - Rescue Me"]
 ]; 
