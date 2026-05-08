@@ -1378,5 +1378,7 @@ const listaT = [
 ["_siJRgDlddY", "2026-04-27", "Alice In Chains - Nutshell"],
 ["DH1eq80zroE", "2026-04-30", "Cseh Tamás - A jobbik részem"],
 ["g6U3VKOfdj0", "2026-05-01", "Nirvana - On A Plain"],
-["zDcJXNkYtN8", "2026-05-02", "Bell Book And Candle - Rescue Me"]
-]; 
+["zDcJXNkYtN8", "2026-05-02", "Bell Book And Candle - Rescue Me"],
+["pZbyQftBwOA", "2026-05-08", "Chris Isaak - Blue Hotel"],
+["ufOvNNfk--Y", "2026-05-08", "Chris Isaak - Blue Hotel #live"]
+];
