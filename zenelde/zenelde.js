@@ -1383,5 +1383,6 @@ const listaT = [
 ["ufOvNNfk--Y", "2026-05-08", "Chris Isaak - Blue Hotel #live"],
 ["RrJwccZBl-w", "2026-05-10", "T'Pau - China In Your Hand"],
 ["7uhWJATdXMA", "2026-05-13", "Maxx - Get A Way"],
-["gOoKzw3JSCM", "2026-05-14", "ZZ Top - Viva Las Vegas #cover"]
+["gOoKzw3JSCM", "2026-05-14", "ZZ Top - Viva Las Vegas #cover"],
+["gboMFvXrtqg", "2026-05-19", "Edda - Kínoz egy ének"]
 ];
