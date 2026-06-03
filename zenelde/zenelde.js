@@ -673,7 +673,7 @@ const listaT = [
 ["aRYokc3VBC4", "2012-07-13", "The Rolling Stones - Like A Rolling Stone - Like A Rolling Stone #cover"],
 ["GG1pyXQwdNE", "2012-07-13", "Green Day - Like A Rolling Stone #cover"],
 ["0iMyEWVvSL8", "2012-07-13", "David Bowie - Like A Rolling Stone #cover"],
-["j_JQAIKj-eE", "2012-07-25", "A.E. Bizottság - Amikor pedig kígyókkal…"],
+["j_JQAIKj-eE", "2012-07-25", "Albert Einstein Bizottság - Amikor pedig kígyókkal…"],
 ["YLrfVAdYuTY", "2012-07-30", "Nirvana - Been A Son"],
 ["UylZ_e2mAFk", "2012-08-05", "Majka feat. BLR and Curtis - Belehalok"],
 ["Kx9ZzoWzhVU", "2012-08-05", "Pamkutya - Belehalok #parody"],
@@ -1384,5 +1384,6 @@ const listaT = [
 ["RrJwccZBl-w", "2026-05-10", "T'Pau - China In Your Hand"],
 ["7uhWJATdXMA", "2026-05-13", "Maxx - Get A Way"],
 ["gOoKzw3JSCM", "2026-05-14", "ZZ Top - Viva Las Vegas #cover"],
-["gboMFvXrtqg", "2026-05-19", "Edda - Kínoz egy ének"]
+["gboMFvXrtqg", "2026-05-19", "Edda - Kínoz egy ének"],
+["ddI1_JUJjaI", "2026-06-03", "Shania Twain - Rock This Country!"]
 ];
