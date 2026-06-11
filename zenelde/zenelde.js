@@ -1386,5 +1386,6 @@ const listaT = [
 ["gOoKzw3JSCM", "2026-05-14", "ZZ Top - Viva Las Vegas #cover"],
 ["gboMFvXrtqg", "2026-05-19", "Edda - Kínoz egy ének"],
 ["ddI1_JUJjaI", "2026-06-03", "Shania Twain - Rock This Country!"],
-["3vFVvT7l8gU", "2026-06-05", "The Cranberries - No Need To Argue"]
+["3vFVvT7l8gU", "2026-06-05", "The Cranberries - No Need To Argue"],
+["cosroPOp8gY", "2026-06-11", "Albert Einstein Bizottság - Konyhagyeplő"]
 ];
