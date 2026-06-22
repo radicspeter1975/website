@@ -1388,5 +1388,6 @@ const listaT = [
 ["ddI1_JUJjaI", "2026-06-03", "Shania Twain - Rock This Country!"],
 ["3vFVvT7l8gU", "2026-06-05", "The Cranberries - No Need To Argue"],
 ["cosroPOp8gY", "2026-06-11", "Albert Einstein Bizottság - Konyhagyeplő"],
-["4oCCxX3OjRo", "2026-06-20", "Moby Dick - Beteg a Föld"]
+["4oCCxX3OjRo", "2026-06-20", "Moby Dick - Beteg a Föld"],
+["8B9elM8fw-Q", "2026-06-22", "Kispál és a Borz - Tingli-tangli (+mellékdal)"]
 ];
