@@ -1390,5 +1390,6 @@ const listaT = [
 ["cosroPOp8gY", "2026-06-11", "Albert Einstein Bizottság - Konyhagyeplő"],
 ["4oCCxX3OjRo", "2026-06-20", "Moby Dick - Beteg a Föld"],
 ["8B9elM8fw-Q", "2026-06-22", "Kispál és a Borz - Tingli-tangli (+mellékdal)"],
-["zWwOO3hXPZA", "2026-06-23", "Fun Lovin' Criminals - Big Night Out"]
+["zWwOO3hXPZA", "2026-06-23", "Fun Lovin' Criminals - Big Night Out"],
+["pZLIWoUbcyo", "2026-06-30", "Die Toten Hosen - Azzurro #cover"]
 ];
