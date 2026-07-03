@@ -1393,5 +1393,6 @@ const listaT = [
 ["zWwOO3hXPZA", "2026-06-23", "Fun Lovin' Criminals - Big Night Out"],
 ["pZLIWoUbcyo", "2026-06-30", "Die Toten Hosen - Azzurro #cover"],
 ["C6dpQWnRII0", "2026-07-01", "Eros Ramazzotti - Se bastasse una canzone"],
-["paxCkni3ahU", "2026-07-02", "Nirvana - Dive"]
+["paxCkni3ahU", "2026-07-02", "Nirvana - Dive"],
+["iQqR_VbA41k", "2026-07-03", "Beatrice - Túl késő már"]
 ];
