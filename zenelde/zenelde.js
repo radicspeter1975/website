@@ -1396,5 +1396,7 @@ const listaT = [
 ["paxCkni3ahU", "2026-07-02", "Nirvana - Dive"],
 ["iQqR_VbA41k", "2026-07-03", "Beatrice - Túl késő már"],
 ["p3l7fgvrEKM", "2026-07-04", "Gala - Freed From Desire"],
-["Ejh_lps5Fvw", "2026-07-05", "Spions - In Andy Warhol's Factory "]
+["Ejh_lps5Fvw", "2026-07-05", "Spions - In Andy Warhol's Factory "],
+["oG6fayQBm9w", "2026-07-06", "Lou Reed - Walk on the Wild Side"],
+["WVBfmOYvTiI", "2026-07-06", "Alice Phoebe Lou - Walk on the Wild Side #cover"]
 ];
