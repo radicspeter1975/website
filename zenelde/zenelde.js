@@ -1402,5 +1402,6 @@ const listaT = [
 ["Rt9tW3cMLhI", "2026-07-07", "Olivia Rodrigo - stupid song"],
 ["lWsVIHall9c", "2026-07-08", "Tankcsapda - A legjobb méreg"],
 ["EiZP7UtEFB0", "2026-07-08", "Irigy Hónaljmirigy - Jönnek A Számból A Férgek #parody"],
-["R7o_ZC8xvnQ", "2026-07-10", "Aurora - Mire vársz"]
+["R7o_ZC8xvnQ", "2026-07-10", "Aurora - Mire vársz"],
+["dc7ureLWk90", "2026-07-11", "Aljas Kúszóbab - Nagy Szerszám"]
 ];
