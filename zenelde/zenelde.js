@@ -1404,5 +1404,6 @@ const listaT = [
 ["EiZP7UtEFB0", "2026-07-08", "Irigy Hónaljmirigy - Jönnek A Számból A Férgek #parody"],
 ["R7o_ZC8xvnQ", "2026-07-10", "Aurora - Mire vársz"],
 ["dc7ureLWk90", "2026-07-11", "Aljas Kúszóbab - Nagy Szerszám"],
-["aEhn5UNQGH8", "2026-07-12", "Chris Isaak - Super Magic 2000"]
+["aEhn5UNQGH8", "2026-07-12", "Chris Isaak - Super Magic 2000"],
+["A_37Eg_Sr3c", "2026-07-14", "Sziámi - 7x7"]
 ];
