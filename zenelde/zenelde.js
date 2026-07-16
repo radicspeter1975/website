@@ -1406,5 +1406,6 @@ const listaT = [
 ["dc7ureLWk90", "2026-07-11", "Aljas Kúszóbab - Nagy Szerszám"],
 ["aEhn5UNQGH8", "2026-07-12", "Chris Isaak - Super Magic 2000"],
 ["A_37Eg_Sr3c", "2026-07-14", "Sziámi - 7x7"],
-["g3327lIwcPA", "2026-07-15", "Jazz+Az - Mit tehet a sejt"]
+["g3327lIwcPA", "2026-07-15", "Jazz+Az - Mit tehet a sejt"],
+["YbPGUiJddjQ", "2026-07-16", "Amorf Ördögök - Mikor megmozdult a Föld"]
 ];
