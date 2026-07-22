@@ -1408,5 +1408,6 @@ const listaT = [
 ["A_37Eg_Sr3c", "2026-07-14", "Sziámi - 7x7"],
 ["g3327lIwcPA", "2026-07-15", "Jazz+Az - Mit tehet a sejt"],
 ["YbPGUiJddjQ", "2026-07-16", "Amorf Ördögök - Mikor megmozdult a Föld"],
-["pg6axeZuQeA", "2026-07-18", "István a király - Üdvöz légyen Géza fia + Koppány küldött jó úrnőm"]
+["pg6axeZuQeA", "2026-07-18", "István a király - Üdvöz légyen Géza fia + Koppány küldött jó úrnőm"],
+["B402rKl4bUg", "2026-07-22", "Olivia Rodrigo - the cure"]
 ];
