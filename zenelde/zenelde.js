@@ -1410,5 +1410,6 @@ const listaT = [
 ["YbPGUiJddjQ", "2026-07-16", "Amorf Ördögök - Mikor megmozdult a Föld"],
 ["pg6axeZuQeA", "2026-07-18", "István a király - Üdvöz légyen Géza fia + Koppány küldött jó úrnőm"],
 ["B402rKl4bUg", "2026-07-22", "Olivia Rodrigo - the cure"],
-["5Zz0HoW29aA", "2026-07-23", "Emil.RuleZ! - A lány, aki csak derékig látszik"]
+["5Zz0HoW29aA", "2026-07-23", "Emil.RuleZ! - A lány, aki csak derékig látszik"],
+["WwLlYCIzMcw", "2026-07-24", "URH - Pokoli Aranykor"]
 ];
