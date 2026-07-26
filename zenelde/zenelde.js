@@ -1412,5 +1412,6 @@ const listaT = [
 ["B402rKl4bUg", "2026-07-22", "Olivia Rodrigo - the cure"],
 ["5Zz0HoW29aA", "2026-07-23", "Emil.RuleZ! - A lány, aki csak derékig látszik"],
 ["WwLlYCIzMcw", "2026-07-24", "URH - Pokoli Aranykor"],
-["NEYR3t-zCnc", "2026-07-25", "Lambrini Girls - Love"]
+["NEYR3t-zCnc", "2026-07-25", "Lambrini Girls - Love"],
+["DjMgGuUlT1M", "2026-07-26", "Hobo Blues Band - Mata Hari"]
 ];
