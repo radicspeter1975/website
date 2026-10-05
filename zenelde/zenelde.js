@@ -1417,5 +1417,6 @@ const listaT = [
 ["JEq10L7u3SM", "2026-08-01", "Fatboy Slim - Ya Mama (Push The Tempo)"],
 ["-_2svSyRcys", "2026-08-02", "Apollo 440 - Heart Go Boom"],
 ["9lTBlbDjdC0", "2026-08-08", "Beatrice - Fönn Tarnicán"],
-["7gYX2EI1dG8", "2026-10-04", "Belga - Külföldi"]
+["7gYX2EI1dG8", "2026-10-04", "Belga - Külföldi"],
+["H0fHSAk8h68", "2026-10-05", "Moby Dick - Bűz van"]
 ];
