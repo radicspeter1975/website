@@ -1418,5 +1418,6 @@ const listaT = [
 ["-_2svSyRcys", "2026-08-02", "Apollo 440 - Heart Go Boom"],
 ["9lTBlbDjdC0", "2026-08-08", "Beatrice - Fönn Tarnicán"],
 ["7gYX2EI1dG8", "2026-10-04", "Belga - Külföldi"],
-["H0fHSAk8h68", "2026-10-05", "Moby Dick - Bűz van"]
+["H0fHSAk8h68", "2026-10-05", "Moby Dick - Bűz van"],
+["_DAuSNXBgoM", "2026-10-06", "Lambrini Girls - Cult of Celebrity"]
 ];
