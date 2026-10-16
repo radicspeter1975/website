@@ -1,0 +1,45 @@
+name: Update Zenelde HTML Version
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'zenelde/zenelde.js'
+
+jobs:
+  update-version:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Update HTML Version
+        run: |
+          VER=$(date +'%Y%m%d%H%M%S')
+          echo "NEW_VER=$VER" >> $GITHUB_ENV
+
+          if [ -f "pages/zenelde.html" ]; then
+            sed -i "s|zenelde\.js?v=[^ \">]*|zenelde.js?v=$VER|g" pages/zenelde.html
+            echo "Frissített verzió: $VER"
+            grep "zenelde.js" pages/zenelde.html
+          else
+            echo "Hiba: pages/zenelde.html nem található!"
+            exit 1
+          fi
+
+      - name: Push Changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add pages/zenelde.html
+
+          if git diff --cached --quiet; then
+            echo "Nincs változás."
+          else
+            git commit -m "zenelde.html verzió frissítés ($NEW_VER)"
+            git push origin main
+          fi

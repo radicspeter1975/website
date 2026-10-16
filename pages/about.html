@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="hu">
+<!-- 26.10.12 AI -->
+<head>
+  <title>magamról</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Radics Péter oldala github és AI">
+  <meta name="keywords" content="zenélde klippek kották">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/favicon.png">
+  <link rel="stylesheet" href="/css/w3.css">
+</head>
+
+<body class="w3-content">
+
+<!-- /header.html -->
+<div id="menu-placeholder"></div>
+
+<!-- main -->
+<main class="w3-container w3-center">
+
+<div class="w3-large w3-bold w3-padding">
+ Magamról
+</div>
+
+<div class="w3-row-padding">
+  <div class="w3-half">
+     <img src="/img/rp.png"  class="w3-image w3-border w3-padding" alt="magam" onmouseover="this.src='/img/rp2.png'" onmouseleave="this.src='/img/rp.png'">
+  </div>
+  <div class="w3-half">
+    <p style="text-align:justify">
+    A nevem <b>Radics Péter</b>, informatikusként dolgozom a MÁV-nál (mint gondolhatod, nem webfejlesztőként :). <span id="eletkor"></span> éves vagyok, Budapesten élek egyedül - és ez már bizonyára így is marad (remélem nem az, hogy Budapesten élek).
+    Hobbim a családi <a class="w3-hover-teal" href="/pages/kutyak.html">kutyapáros</a> a szüleimnél, ugyanott biciklizés, zenehallgatás (ez meg inkább Budapesten), informatika úgy általában és az olvasás.
+    Kedvenc zenéimet a <a target="_blank" class="w3-hover-green" href="/pages/zenelde.html">zenélde</a> lapon találod. Itt majd még talán pár vegyes fénykép lesz valamikor az elmúlt évekből.
+    Ha üzennél vagy kérdeznél, <a class="w3-hover-gray" href="mailto:admin@radicspeter.hu?subject=radicspeter.hu">erre</a> a címre írhatsz. 
+    </p>
+  </div>
+</div>
+
+
+<script>
+"use strict";
+  // eletkor
+  document.getElementById("eletkor").textContent = new Date().getFullYear()-1975;
+</script>
+
+</main>
+
+<footer class="w3-container w3-green w3-center">
+	Kapcsolat:&nbsp;<a class="w3-hover-black" href="mailto:admin@radicspeter.hu?subject=radicspeter.hu">Radics&nbsp;Péter</a> 
+    <a class="w3-hover-black" target="_blank" href="https://github.com/radicspeter1975/website">github</a>
+</footer>
+
+<script>
+  fetch('/header.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('menu-placeholder').innerHTML = data;
+    });
+</script>
+
+</body>
+
+</html>

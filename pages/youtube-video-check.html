@@ -1,0 +1,392 @@
+<!-- 26.10.14 AI -->
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <title>YouTube-videó ellenőrzés</title>
+  <meta charset="utf-8">
+  <meta name="description" content="YouTube-videók lejátszásának ellenőrzése">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/favicon.png">
+  <link rel="stylesheet" href="/css/w3.css">
+  <link rel="stylesheet" href="/css/youtube.css">
+  <script src="/zenelde/zenelde.js?v=20261013192235"></script>
+</head>
+<body class="w3-content">
+
+<!-- /header.html -->
+<div id="menu-placeholder"></div>
+
+<main class="w3-container w3-center">
+  <div class="w3-large w3-bold w3-padding">YouTube-videó ellenőrzés (lejátszó)</div>
+  <p>Az ellenőrzés a <code>zenelde.js</code> fájlban található <code>listaT</code> listát használja.</p>
+
+  <div class="w3-section">
+    <button id="start-button" class="w3-button w3-green w3-round" disabled>API betöltése…</button>
+    <button id="stop-button" class="w3-button w3-red w3-round" disabled>Leállítás</button>
+    <button id="reset-button" class="w3-button w3-orange w3-round" disabled>Újrakezdés</button>
+  </div>
+
+  <div id="status" class="status" role="status" aria-live="polite">A YouTube-lejátszó betöltésére várunk.</div>
+  <div id="progress-track" role="progressbar" aria-label="Ellenőrzés előrehaladása" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+    <div id="progress-bar"></div>
+  </div>
+  <div id="summary" class="status">Ellenőrzött: 0 · Jó: 0 · Problémás: 0</div>
+
+  <section id="results" class="w3-section" hidden>
+    <h4>Problémás vagy bizonytalan videók</h4>
+    <div id="reasons"></div>
+    <p id="no-problems" hidden>Nem találtunk problémás videót.</p>
+    <ol id="problem-list"></ol>
+    <button id="email-button" class="w3-button w3-blue w3-round" disabled>Hibás linkek küldése e-mailben</button>
+    <button id="copy-button" class="w3-button w3-blue w3-round" disabled>Másolás vágólapra</button>
+    <p class="w3-small">Az e-mail a saját levelezőprogramodban nyílik meg; elküldés előtt ellenőrizheted. Hosszú lista esetén használd a vágólapra másolást.</p>
+  </section>
+
+  <!-- A lejátszó a képernyőn kívül van, de nem display:none, mert az API-nak méretezett elem kell. -->
+  <div id="player-container"><div id="player"></div></div>
+</main>
+
+<footer class="w3-container w3-green w3-center">
+  Kapcsolat:&nbsp;<a class="w3-hover-black" href="mailto:admin@radicspeter.hu?subject=radicspeter.hu">Radics&nbsp;Péter</a>
+  <a class="w3-hover-black" target="_blank" rel="noopener" href="https://github.com/radicspeter1975/website">github</a>
+</footer>
+
+<script>
+'use strict';
+
+const EMAIL_TO = 'admin@radicspeter.hu';
+// 'cue': a videót csak előkészíti (gyors, ~1 mp), 'play': ténylegesen elindítja (lassabb, de a legbiztosabb)
+const CHECK_MODE = 'cue';
+const PLAYING_CONFIRM_MS = 300;
+const VIDEO_TIMEOUT_MS = CHECK_MODE === 'cue' ? 4000 : 6000;
+const MAILTO_MAX_LENGTH = 1800;
+
+let player = null;
+let running = false;
+let paused = false;
+let apiReady = false;
+let currentIndex = -1;
+let successCount = 0;
+let problemCount = 0;
+let checkedCount = 0;
+let problems = [];
+let timeoutHandle = null;
+let advanceHandle = null;
+let runToken = 0;
+
+const startButton = document.getElementById('start-button');
+const stopButton = document.getElementById('stop-button');
+const resetButton = document.getElementById('reset-button');
+const statusEl = document.getElementById('status');
+const summaryEl = document.getElementById('summary');
+const progressBar = document.getElementById('progress-bar');
+const progressTrack = document.getElementById('progress-track');
+const problemList = document.getElementById('problem-list');
+const reasonsEl = document.getElementById('reasons');
+const resultsSection = document.getElementById('results');
+const noProblemsEl = document.getElementById('no-problems');
+const emailButton = document.getElementById('email-button');
+const copyButton = document.getElementById('copy-button');
+
+function updateSummary() {
+  const total = Array.isArray(listaT) ? listaT.length : 0;
+  const percent = total ? Math.round((checkedCount / total) * 100) : 0;
+  summaryEl.textContent = `Ellenőrzött: ${checkedCount}/${total} · Jó: ${successCount} · Problémás: ${problemCount}`;
+  progressBar.style.width = `${percent}%`;
+  progressTrack.setAttribute('aria-valuenow', String(percent));
+}
+
+function zeneldeUrl(date) {
+  return `https://radicspeter.hu/pages/zenelde?${encodeURIComponent(date || '')}`;
+}
+
+function youtubeUrl(id) {
+  return `https://www.youtube.com/watch?v=${encodeURIComponent(id || '')}`;
+}
+
+function renderReasons() {
+  reasonsEl.replaceChildren();
+  if (problems.length === 0) return;
+  const counts = new Map();
+  for (const item of problems) counts.set(item.reason, (counts.get(item.reason) || 0) + 1);
+  const sorted = [...counts.entries()].sort((a, b) => b[1] - a[1]);
+  const title = document.createElement('strong');
+  title.textContent = 'Hibák típus szerint:';
+  reasonsEl.appendChild(title);
+  const ul = document.createElement('ul');
+  for (const [reason, count] of sorted) {
+    const li = document.createElement('li');
+    li.textContent = `${count} × ${reason}`;
+    ul.appendChild(li);
+  }
+  reasonsEl.appendChild(ul);
+}
+
+function renderProblems() {
+  problemList.replaceChildren();
+  for (const item of problems) {
+    const li = document.createElement('li');
+    const title = document.createElement('strong');
+    title.textContent = `${item.index + 1}. ${item.date} – ${item.title}`;
+    li.appendChild(title);
+    li.appendChild(document.createElement('br'));
+
+    const pageLink = document.createElement('a');
+    pageLink.href = zeneldeUrl(item.date);
+    pageLink.target = '_blank';
+    pageLink.rel = 'noopener';
+    pageLink.textContent = 'Zenélde oldal';
+    li.appendChild(pageLink);
+    li.appendChild(document.createTextNode(' · '));
+
+    const videoLink = document.createElement('a');
+    videoLink.href = youtubeUrl(item.id);
+    videoLink.target = '_blank';
+    videoLink.rel = 'noopener';
+    videoLink.textContent = 'YouTube-videó';
+    li.appendChild(videoLink);
+    li.appendChild(document.createTextNode(` · Eredmény: ${item.reason}`));
+    problemList.appendChild(li);
+  }
+  renderReasons();
+  noProblemsEl.hidden = problems.length !== 0;
+  emailButton.disabled = problems.length === 0;
+  copyButton.disabled = problems.length === 0;
+}
+
+function buildReport() {
+  const lines = [
+    'YouTube-ellenőrzés – problémás vagy bizonytalan videók',
+    `Problémás: ${problems.length}`,
+    '',
+    ...problems.flatMap((item, n) => [
+      `${n + 1}. ${item.date} – ${item.title}`,
+      `Zenélde: ${zeneldeUrl(item.date)}`,
+      `YouTube: ${youtubeUrl(item.id)}`,
+      `Eredmény: ${item.reason}`,
+      ''
+    ])
+  ];
+  return lines.join('\r\n');
+}
+
+function clearTimers() {
+  if (timeoutHandle !== null) clearTimeout(timeoutHandle);
+  if (advanceHandle !== null) clearTimeout(advanceHandle);
+  timeoutHandle = null;
+  advanceHandle = null;
+}
+
+function finishRun(message, isPaused = false) {
+  clearTimers();
+  running = false;
+  paused = isPaused;
+  startButton.disabled = !apiReady;
+  startButton.textContent = isPaused ? 'Folytatás' : 'Ellenőrzés indítása';
+  stopButton.disabled = true;
+  resetButton.disabled = !isPaused;
+  statusEl.textContent = message;
+  resultsSection.hidden = false;
+  renderProblems();
+  updateSummary();
+}
+
+function markProblem(index, reason, token) {
+  if (!running || token !== runToken || index !== currentIndex) return;
+  clearTimers();
+  const row = listaT[index];
+  problems.push({ index, id: row[0], date: row[1], title: row[2], reason });
+  problemCount++;
+  checkedCount++;
+  updateSummary();
+  nextVideo(token);
+}
+
+function nextVideo(token) {
+  if (!running || token !== runToken) return;
+  clearTimers();
+  currentIndex++;
+
+  if (currentIndex >= listaT.length) {
+    finishRun('Az ellenőrzés befejeződött.');
+    return;
+  }
+
+  const row = listaT[currentIndex];
+  statusEl.textContent = `Ellenőrzés: ${currentIndex + 1}/${listaT.length} – ${row[2]}`;
+  updateSummary();
+  const indexAtLoad = currentIndex;
+  timeoutHandle = setTimeout(() => {
+    markProblem(indexAtLoad, 'Időtúllépés: nem indult el a lejátszás', token);
+  }, VIDEO_TIMEOUT_MS);
+
+  try {
+    if (CHECK_MODE === 'cue') {
+      player.cueVideoById({ videoId: row[0] });
+    } else {
+      player.loadVideoById({ videoId: row[0] });
+    }
+  } catch (error) {
+    markProblem(indexAtLoad, 'A lejátszó nem tudta betölteni a videót', token);
+  }
+}
+
+function onYouTubeIframeAPIReady() {
+  player = new YT.Player('player', {
+    width: '200',
+    height: '200',
+    playerVars: { autoplay: 1, controls: 0, fs: 0, disablekb: 1, playsinline: 1 },
+    events: {
+      onReady: function () {
+        apiReady = true;
+        player.mute();
+        startButton.disabled = false;
+        startButton.textContent = 'Ellenőrzés indítása';
+        statusEl.textContent = 'Készen áll. Indítsd el az ellenőrzést.';
+      },
+      onError: function (event) {
+        if (!running || currentIndex < 0) return;
+        const descriptions = {
+          2: 'Érvénytelen videóazonosító vagy paraméter',
+          5: 'A videó nem játszható le a HTML5-lejátszóban',
+          100: 'A videó nem található vagy privát',
+          101: 'A tulajdonos nem engedélyezi a beágyazott lejátszást',
+          150: 'A tulajdonos nem engedélyezi a beágyazott lejátszást',
+          153: 'Hiányzik a kliensazonosító vagy a HTTP Referer'
+        };
+        markProblem(currentIndex, descriptions[event.data] || `YouTube-lejátszó hiba (${event.data})`, runToken);
+      },
+      onStateChange: function (event) {
+        if (!running || currentIndex < 0) return;
+        if (CHECK_MODE === 'cue') {
+          if (event.data !== YT.PlayerState.CUED) return;
+          // késői CUED esemény kiszűrése: csak az aktuális videó számít
+          try {
+            if (player.getVideoData().video_id !== listaT[currentIndex][0]) return;
+          } catch (_) {}
+          const tokenAtCue = runToken;
+          clearTimers();
+          successCount++;
+          checkedCount++;
+          updateSummary();
+          nextVideo(tokenAtCue);
+          return;
+        }
+        if (event.data === YT.PlayerState.PLAYING) {
+          const indexAtPlay = currentIndex;
+          const tokenAtPlay = runToken;
+          if (timeoutHandle !== null) clearTimeout(timeoutHandle);
+          if (advanceHandle !== null) clearTimeout(advanceHandle);
+          timeoutHandle = null;
+          advanceHandle = setTimeout(() => {
+            if (!running || tokenAtPlay !== runToken || indexAtPlay !== currentIndex) return;
+            clearTimers();
+            successCount++;
+            checkedCount++;
+            updateSummary();
+            try { player.stopVideo(); } catch (_) {}
+            nextVideo(tokenAtPlay);
+          }, PLAYING_CONFIRM_MS);
+        }
+      }
+    }
+  });
+}
+
+startButton.addEventListener('click', () => {
+  if (!apiReady || running) return;
+  if (!Array.isArray(listaT) || listaT.length === 0) {
+    statusEl.textContent = 'Nem található használható listaT tömb a zenelde.js fájlban.';
+    return;
+  }
+  runToken++;
+  if (!paused) {
+    currentIndex = -1;
+    successCount = 0;
+    problemCount = 0;
+    checkedCount = 0;
+    problems = [];
+    problemList.replaceChildren();
+  }
+  paused = false;
+  running = true;
+  resultsSection.hidden = true;
+  startButton.disabled = true;
+  stopButton.disabled = false;
+  resetButton.disabled = true;
+  startButton.textContent = 'Ellenőrzés folyamatban…';
+  updateSummary();
+  nextVideo(runToken);
+});
+
+stopButton.addEventListener('click', () => {
+  if (!running) return;
+  runToken++;
+  clearTimers();
+  running = false;
+  currentIndex--; // a megszakított videót folytatáskor újra ellenőrizzük
+  try { player.stopVideo(); } catch (_) {}
+  finishRun(`Megállítva a(z) ${currentIndex + 2}. videónál. A „Folytatás" gombbal ott folytathatod.`, true);
+});
+
+resetButton.addEventListener('click', () => {
+  if (running || !paused) return;
+  paused = false;
+  resetButton.disabled = true;
+  startButton.textContent = 'Ellenőrzés indítása';
+  statusEl.textContent = 'Készen áll. Indítsd el az ellenőrzést.';
+});
+
+emailButton.addEventListener('click', () => {
+  if (problems.length === 0) return;
+  const report = buildReport();
+  let body = report;
+  if (encodeURIComponent(body).length > MAILTO_MAX_LENGTH) {
+    body = 'A lista túl hosszú az e-mailhez, ezért itt csak az első része szerepel. ' +
+           'A teljes listához használd a „Másolás vágólapra" gombot.\r\n\r\n' + report;
+    while (encodeURIComponent(body).length > MAILTO_MAX_LENGTH) {
+      body = body.slice(0, Math.floor(body.length * 0.9));
+    }
+  }
+  window.location.href = `mailto:${EMAIL_TO}?subject=${encodeURIComponent('youtube')}&body=${encodeURIComponent(body)}`;
+});
+
+copyButton.addEventListener('click', async () => {
+  if (problems.length === 0) return;
+  try {
+    await navigator.clipboard.writeText(buildReport());
+    copyButton.textContent = 'Kimásolva ✔';
+  } catch (_) {
+    copyButton.textContent = 'A másolás nem sikerült';
+  }
+  setTimeout(() => { copyButton.textContent = 'Másolás vágólapra'; }, 2000);
+});
+
+document.addEventListener('visibilitychange', () => {
+  if (document.hidden && running) {
+    statusEl.textContent += ' (Figyelem: a lap a háttérben van, emiatt a böngésző akadályozhatja a lejátszást.)';
+  }
+});
+
+// YouTube IFrame Player API betöltése.
+const apiScript = document.createElement('script');
+apiScript.src = 'https://www.youtube.com/iframe_api';
+apiScript.async = true;
+apiScript.onerror = () => {
+  statusEl.textContent = 'A YouTube API nem töltődött be (reklámblokkoló? hálózat?).';
+  startButton.textContent = 'API nem érhető el';
+};
+document.head.appendChild(apiScript);
+</script>
+
+<script>
+  fetch('/header.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('menu-placeholder').innerHTML = data;
+    });
+</script>
+
+</body>
+</html>

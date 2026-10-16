@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="hu">
+<!-- 26.10.14 AI -->
+<head>
+  <title>youtube</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Radics Péter oldala github és AI">
+  <meta name="keywords" content="zenélde klippek kották">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/favicon.png">
+  <link rel="stylesheet" href="/css/w3.css">
+</head>
+
+<body class="w3-content">
+
+<!-- /header.html -->
+<div id="menu-placeholder"></div>
+
+<!-- main -->
+<main class="w3-container w3-center">
+
+<div class="w3-padding">
+  <!-- API kulcs kezelő sáv -->
+  <div class="w3-margin-bottom" style="font-size: 14px;">
+    <span id="keystatus" class="w3-text-grey">API kulcs: nincs tárolva</span>
+    <button onclick="beallitKulcs()" class="w3-button w3-tiny w3-light-grey w3-border w3-margin-left">Kulcs megadása / módosítása</button>
+  </div>
+
+  <input id="linkinput" class="w3-input w3-border" type="text"
+         placeholder="YouTube link vagy 11 karakteres azonosító">
+  <button id="gomb" class="w3-button w3-blue w3-margin-top">Megnyit</button>
+</div>
+
+<h4 id="videodesc" class="w3-blue w3-padding-small">youtube</h4>
+<div id="tartalom"></div>
+<pre id="apitxt" class="w3-left-align" style="white-space:pre-wrap;word-break:break-word"></pre>
+
+<script>
+"use strict";
+
+// API kulcs kezelése localStorage-ból
+function getApiKey() {
+  return localStorage.getItem("yt_api_key") || "";
+}
+
+function frissitKulcsStatusz() {
+  const statusEl = document.getElementById("keystatus");
+  const key = getApiKey();
+  if (key) {
+    statusEl.textContent = "API kulcs: elmentve ✔️";
+    statusEl.className = "w3-text-green";
+  } else {
+    statusEl.textContent = "API kulcs: nincs tárolva ❌";
+    statusEl.className = "w3-text-red";
+  }
+}
+
+function beallitKulcs() {
+  const current = getApiKey();
+  const uj = prompt("Add meg a YouTube Data API v3 kulcsodat (a bönyésződben lesz tárolva):", current);
+  if (uj !== null) {
+    const t = uj.trim();
+    if (t) {
+      localStorage.setItem("yt_api_key", t);
+      alert("API kulcs sikeresen elmentve!");
+    } else {
+      localStorage.removeItem("yt_api_key");
+      alert("API kulcs törölve.");
+    }
+    frissitKulcsStatusz();
+  }
+}
+
+function extractYouTubeID(input) {
+  input = input.trim();
+  if (/^[A-Za-z0-9_-]{11}$/.test(input)) return input;
+  const m = input.match(/(?:youtube(?:-nocookie)?\.com\/(?:.*[?&]v=|embed\/|shorts\/)|youtu\.be\/)([A-Za-z0-9_-]{11})/);
+  return m ? m[1] : null;
+}
+
+async function getVideoMetadata(videoId) {
+  const apiKey = getApiKey();
+  if (!apiKey) {
+    throw new Error("Hiányzik az API kulcs! Kérlek, add meg a fenti gombbal.");
+  }
+
+  const url = "https://www.googleapis.com/youtube/v3/videos"
+    + "?part=snippet,contentDetails,status,statistics"
+    + "&id=" + encodeURIComponent(videoId)
+    + "&key=" + apiKey;
+  const response = await fetch(url);
+  if (!response.ok) throw new Error("API hiba: " + response.status);
+  return response.json();
+}
+
+async function showVideo(input) {
+  const desc = document.getElementById("videodesc");
+  const box = document.getElementById("tartalom");
+  const api = document.getElementById("apitxt");
+  box.textContent = "";
+  api.textContent = "";
+
+  const videoId = extractYouTubeID(input);
+  if (!videoId) {
+    desc.textContent = "érvénytelen link";
+    return;
+  }
+
+  desc.textContent = "betöltés...";
+  let data;
+  try {
+    data = await getVideoMetadata(videoId);
+  } catch (e) {
+    desc.textContent = "hiba a lekérdezéskor";
+    api.textContent = String(e);
+    return;
+  }
+
+  // ellenőrzés: létezik-e a videó
+  if (!data.items || data.items.length === 0) {
+    desc.textContent = "nem létező video";
+    return;
+  }
+
+  desc.textContent = data.items[0].snippet.title;
+
+  // ellenőrzés: beágyazható-e
+  const embeddable = data.items[0].status && data.items[0].status.embeddable;
+  if (embeddable === false) {
+    box.textContent = "A videó nem ágyazható be.";
+  } else {
+    const iframe = document.createElement("iframe");
+    iframe.width = "640";
+    iframe.height = "480";
+    iframe.style.maxWidth = "100%";
+    iframe.src = "https://www.youtube.com/embed/" + videoId;
+    iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+    iframe.referrerPolicy = "strict-origin-when-cross-origin";
+    iframe.allowFullscreen = true;
+    box.appendChild(iframe);
+  }
+
+  api.textContent = JSON.stringify(data, null, 2);
+}
+
+// Inicializálás betöltéskor
+frissitKulcsStatusz();
+
+// Ha még egyáltalán nincs kulcs, felugorhat kérni is (opcionális, most csak jelzi)
+if (!getApiKey()) {
+  // beallitKulcs(); // Ha szeretnéd, hogy induláskor azonnal kérje, vedd ki a kommentedet
+}
+
+// main: youtube.html?LINK vagy beírt mező
+document.getElementById("gomb").addEventListener("click", () => {
+  const v = document.getElementById("linkinput").value;
+  history.replaceState(null, "", location.pathname + "?" + v.trim());
+  showVideo(v);
+});
+
+document.getElementById("linkinput").addEventListener("keydown", e => {
+  if (e.key === "Enter") document.getElementById("gomb").click();
+});
+
+let linkquery = location.search.slice(1);
+try { linkquery = decodeURIComponent(linkquery); } catch (e) {}
+if (linkquery) {
+  document.getElementById("linkinput").value = linkquery;
+  showVideo(linkquery);
+}
+
+</script>
+
+</main>
+
+<footer class="w3-container w3-green w3-center">
+	Kapcsolat:&nbsp;<a class="w3-hover-black" href="mailto:admin@radicspeter.hu?subject=radicspeter.hu">Radics&nbsp;Péter</a> 
+    <a class="w3-hover-black" target="_blank" href="https://github.com/radicspeter1975/website">github</a>
+</footer>
+
+<script>
+  fetch('/header.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('menu-placeholder').innerHTML = data;
+    });
+</script>
+
+</body>
+
+</html>

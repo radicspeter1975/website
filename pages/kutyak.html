@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="hu">
+<!-- 26.10.14 darab -->
+<head>
+  <title>kutyáink</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Radics Péter oldala github és AI">
+  <meta name="keywords" content="zenélde klippek kották">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/favicon.png">
+  <link rel="stylesheet" href="/css/w3.css">
+</head>
+
+<body class="w3-content">
+
+<!-- /header.html -->
+<div id="menu-placeholder"></div>
+
+<!-- main -->
+<main class="w3-container w3-center">
+
+<!-- 2026.10.12. github-ra-ra -->
+<div class="w3-large w3-bold w3-padding">
+ Kutyáink
+</div>
+
+<div class="w3-blue w3-medium">
+    <span class="w3-btn" onclick="firstpic()">&lt;&lt;</span> &#32;
+    <span class="w3-btn" onclick="prevpic()">&lt;</span> &#32;
+    <b id="picnum"> 1 </b> &#32;
+    <span class="w3-btn" onclick="nextpic()">&gt;</span> &#32;
+    <span class="w3-btn" onclick="lastpic()">&gt;&gt;</span> &#32;
+</div>
+  
+<img id="kutyakep" class="w3-image w3-round w3-padding-16" src="/img/kutyak/01.jpg" alt="kutyaink" onclick="randompic()"><br>
+
+<script>
+"use strict";
+
+const picpath='/img/kutyak/';
+const lastpici=52;
+
+let picindex=1;
+
+randompic();
+
+function randompic()
+{
+ picindex = Math.floor(Math.random() * lastpici) + 1;
+ setpic();
+}
+
+function firstpic()
+{
+  picindex=1;
+  setpic();
+}
+
+function lastpic()
+{
+  picindex=lastpici;
+  setpic();
+}
+
+function prevpic()
+{
+  if (picindex>1) { picindex--; } else { picindex=lastpici; }
+  setpic();
+}
+
+function nextpic()
+{
+  if (picindex<lastpici) { picindex++; } else { picindex=1; }
+  setpic();
+}
+
+function setpic()
+{
+ let picstr=picpath + picindex.toString().padStart(2, "0") + '.jpg';
+ document.getElementById("kutyakep").src =  picstr;
+ document.getElementById("picnum").innerHTML= lastpici +' / ' + picindex;
+}
+
+</script>
+
+</main>
+
+<footer class="w3-container w3-green w3-center">
+	Kapcsolat:&nbsp;<a class="w3-hover-black" href="mailto:admin@radicspeter.hu?subject=radicspeter.hu">Radics&nbsp;Péter</a> 
+    <a class="w3-hover-black" target="_blank" href="https://github.com/radicspeter1975/website">github</a>
+</footer>
+
+<script>
+  fetch('/header.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('menu-placeholder').innerHTML = data;
+    });
+</script>
+
+</body>
+
+</html>
