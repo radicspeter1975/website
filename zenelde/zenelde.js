@@ -1421,5 +1421,6 @@ const listaT = [
 ["H0fHSAk8h68", "2026-10-05", "Moby Dick - Bűz van"],
 ["_DAuSNXBgoM", "2026-10-06", "Lambrini Girls - Cult of Celebrity"],
 ["oSqdiyg4iAU", "2026-10-10", "Trio - Herz Ist Trumpf"],
-["eEpcjgYHE4U", "2026-10-13", "Edelweiss - Starship Edelweiss"]
+["eEpcjgYHE4U", "2026-10-13", "Edelweiss - Starship Edelweiss"],
+["fWCJQbaBcPs", "2026-10-17", "Kontroll Csoport - Hol Vannak A Régi Álmaim"]
 ];
