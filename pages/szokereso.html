@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="hu">
+<!-- 26.10.13 AI -->
+<head>
+  <title>szókereső</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Radics Péter oldala github és AI">
+  <meta name="keywords" content="zenélde klippek kották">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/favicon.png">
+  <link rel="stylesheet" href="/css/w3.css">
+  <link rel="stylesheet" href="/css/szokereso.css">
+</head>
+
+<body class="w3-content">
+
+<!-- /header.html -->
+<div id="menu-placeholder"></div>
+
+<!-- main -->
+<main class="w3-container w3-center">
+
+<div class="w3-large w3-bold w3-padding">
+ Szókereső (Wordle)
+</div>
+
+  <fieldset class="w3-margin-top w3-padding w3-margin-bottom">
+    <legend>megadott betűkből (vagy pont nem) álló szavak keresése</legend>
+    <label for="szo">kötelező minták a szóban</label>
+    <input name="szo" id="szo" type="text" size="30" placeholder="betű,minta,... pld. A,_BO_,BL%K" autofocus>
+    <br>
+    <label for="neszo">tiltott betűk/minták a szóban</label>
+    <input name="neszo" id="neszo" type="text" size="30" placeholder="betű,minta,betű,... pld. B,__O__">
+    <br>
+    <label for="hossz">fix szó hossz:</label>
+    <select name="hossz" id="hossz">
+      <option value="0">nincs</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+      <option value="6">6</option>
+      <option value="7">7</option>
+      <option value="8">8</option>
+      <option value="9">9</option>
+      <option value="10">10</option>
+    </select>
+    <label for="bhossz">digráf (cs, gy ...) egy betű</label>
+    <input type="checkbox" id="bhossz" name="bhossz">
+    <input type="button" class="w3-button w3-red" id="keresgomb" value="Keres">
+  </fieldset>
+
+  <p style="text-align:justify; white-space:pre-line;" id="talalathelye"></p>
+
+<script>
+"use strict";
+
+const SQLJS_URL = "https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/"; // ugyanaz a verzió, mint a nevek.db-nél
+const DB_URL = "/files/szavak.db";
+const HU_ABC = new Intl.Collator('hu');
+
+const talalatok = document.getElementById('talalathelye');
+
+// ---------- adatbázis betöltése (egyszer, oldalbetöltéskor indul) ----------
+function scriptBetolt(src) {
+    return new Promise((ok, hiba) => {
+        const s = document.createElement('script');
+        s.src = src;
+        s.onload = ok;
+        s.onerror = () => hiba(new Error("Nem tölthető be: " + src));
+        document.head.appendChild(s);
+    });
+}
+
+const dbPromise = (async () => {
+    await scriptBetolt(SQLJS_URL + "sql-wasm.js");
+    const [SQL, valasz] = await Promise.all([
+        initSqlJs({ locateFile: f => SQLJS_URL + f }),
+        fetch(DB_URL)
+    ]);
+    if (!valasz.ok) throw new Error("Adatbázis hiba: " + valasz.status);
+    const buf = await valasz.arrayBuffer();
+    return new SQL.Database(new Uint8Array(buf));
+})();
+
+// ---------- a PHP logikája ----------
+// "A,B,CA,A" -> ["%A%A%", "%B%", "%CA%"]  (ismétlődő minta = többször kell szerepelnie)
+function mintak(szoveg) {
+    const darab = new Map();
+    for (const m of szoveg.replace(/\s/g, '').toUpperCase().split(',')) {
+        if (m === '') continue;
+        darab.set(m, (darab.get(m) || 0) + 1);
+    }
+    return [...darab].map(([m, n]) => '%' + (m + '%').repeat(n));
+}
+
+async function szokereso(szo, neszo, hossz, digraf) {
+    const t0 = performance.now();
+    const be = mintak(szo);
+    const ne = mintak(neszo);
+    if (be.length === 0 && ne.length === 0) return { statusz: "no" };
+
+    const where = [
+        ...be.map(() => "SZO LIKE ?"),
+        ...ne.map(() => "SZO NOT LIKE ?")
+    ];
+    const params = [...be, ...ne];
+
+    const h = Number(hossz);
+    if (h > 3 && h < 11) {
+        where.push((digraf ? "BHOSSZ" : "HOSSZ") + "=?");  // fix oszlopnév, nem felhasználói adat
+        params.push(h);
+    }
+
+    const db = await dbPromise;
+    // az SQLite nem magyar ABC szerint rendez (á, é, ú... a végére kerülnének), ezért JS-ben rendezünk
+    const stmt = db.prepare(`SELECT SZO FROM szavak WHERE ${where.join(" AND ")}`);
+    const szavak = [];
+    try {
+        stmt.bind(params);
+        while (stmt.step()) szavak.push(stmt.get()[0]);
+    } finally {
+        stmt.free();
+    }
+
+    szavak.sort(HU_ABC.compare);               // magyar ABC, digráfokkal (cs, gy, ...)
+
+    return {
+        statusz: "ok",
+        darab: szavak.length,
+        szavak,
+        futasido: Math.round(performance.now() - t0) + " ms"
+    };
+}
+
+// ---------- felület ----------
+async function keres() {
+    const szo = document.getElementById('szo').value;
+    const neszo = document.getElementById('neszo').value;
+    const hossz = document.getElementById('hossz').value;
+    const digraf = document.getElementById('bhossz').checked;
+
+    if ((szo + neszo).replace(/[\s,]/g, '') === "") {
+        alert("Adj meg valami feltételt!");
+        return;
+    }
+
+    talalatok.textContent = "keresés...";
+    try {
+        const adat = await szokereso(szo, neszo, hossz, digraf);
+        if (adat.statusz !== "ok") {
+            talalatok.textContent = "Hiba";
+        } else if (adat.darab > 0) {
+            talalatok.textContent = `${adat.darab} találat:\n` + adat.szavak.join(', ');
+            console.log(`Talált: ${adat.darab} szó, futásidő: ${adat.futasido}`);
+        } else {
+            talalatok.textContent = "Nincs találat a megadott feltételekkel.";
+        }
+    } catch (error) {
+        console.error("Hiba a keresés során:", error);
+        talalatok.textContent = "Nem sikerült betölteni az adatbázist.";
+    }
+}
+
+document.getElementById('keresgomb').addEventListener('click', keres);
+for (const id of ['szo', 'neszo']) {
+    document.getElementById(id).addEventListener('keydown', e => { if (e.key === 'Enter') keres(); });
+}
+</script>
+
+</main>
+
+<footer class="w3-container w3-green w3-center">
+	Kapcsolat:&nbsp;<a class="w3-hover-black" href="mailto:admin@radicspeter.hu?subject=radicspeter.hu">Radics&nbsp;Péter</a> 
+    <a class="w3-hover-black" target="_blank" href="https://github.com/radicspeter1975/website">github</a>
+</footer>
+
+<script>
+  fetch('/header.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('menu-placeholder').innerHTML = data;
+    });
+</script>
+
+</body>
+
+</html>

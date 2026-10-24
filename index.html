@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="hu">
+<!-- 26.10.13 -->
+<head>
+  <title>radicspeter.hu</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Radics Péter oldala github és AI">
+  <meta name="keywords" content="zenélde klippek kották">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/favicon.png">
+  <link rel="stylesheet" href="/css/w3.css">
+</head>
+
+<body class="w3-content">
+
+<!-- /header.html -->
+<div id="menu-placeholder"></div>
+
+<!-- main -->
+<main class="w3-container w3-center">
+
+<div class="w3-large w3-bold w3-padding">
+ Üdvözöllek a radicspeter.hu oldalon!
+</div>
+
+<a href="/pages/kutyak.html" class="w3-hover-grayscale"><img class="w3-circle w3-image" src="/favicon.png" alt="kutya"></a>
+
+<div class="w3-container w3-panel w3-card">
+  <ul class="w3-ul w3-hoverable">
+	<li><a href="/pages/about" class="w3-hover-opacity">magamról</a></li>
+	<li><a href="/pages/kutyak" class="w3-hover-opacity">kutyáink</a></li>
+	<li><a href="/pages/szokereso" class="w3-hover-opacity">szókereső</a></li>
+	<li><a href="/pages/zenelde" class="w3-hover-opacity">zenélde</a></li>	
+  </ul>
+</div>
+	
+</main>
+
+<footer class="w3-container w3-green w3-center">
+	Kapcsolat:&nbsp;<a class="w3-hover-black" href="mailto:admin@radicspeter.hu?subject=radicspeter.hu">Radics&nbsp;Péter</a> 
+    <a class="w3-hover-black" target="_blank" href="https://github.com/radicspeter1975/website">github</a>
+</footer>
+
+<script>
+  fetch('/header.html')
+    .then(response => response.text())
+    .then(data => {
+      document.getElementById('menu-placeholder').innerHTML = data;
+    });
+</script>
+
+</body>
+
+</html>
