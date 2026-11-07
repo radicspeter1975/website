@@ -1424,5 +1424,6 @@ const listaT = [
 ["eEpcjgYHE4U", "2026-10-13", "Edelweiss - Starship Edelweiss"],
 ["fWCJQbaBcPs", "2026-10-17", "Kontroll Csoport - Hol Vannak A Régi Álmaim"],
 ["ccR1ZSyvvRI", "2026-10-24", "Amorf Ördögök - A Föld körül"],
-["wVamVcfNm7U", "2026-10-30", "Hobo Blues Band - A vadászok gyülekezője (Vadászat)"]
+["wVamVcfNm7U", "2026-10-30", "Hobo Blues Band - A vadászok gyülekezője (Vadászat)"],
+["vvEAuYdhCq0", "2026-11-07", "Catatonia - Blues Song"]
 ];
