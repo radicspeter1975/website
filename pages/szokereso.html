@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="hu">
+<!-- 26.11.22 Google AI Studio -->
+<head>
+  <title>szókereső</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Radics Péter oldala github és AI">
+  <meta name="keywords" content="zenélde klipek kották">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/favicon.png">
+  <link rel="stylesheet" href="/css/w3.css">
+  <link rel="stylesheet" href="/css/szokereso.css">
+  <script src="/js/menu.js"></script>
+</head>
+
+<body class="w3-light-grey">
+
+<!-- /header.html -->
+<div id="menu-placeholder"></div>
+
+<!-- main -->
+<main class="w3-content w3-container w3-center w3-padding-32" style="max-width:800px">
+
+  <form id="keresform">
+    <fieldset class="w3-white w3-card w3-round w3-padding w3-margin-bottom" style="border:none">
+      <legend>megadott betűkből (vagy pont nem) álló szavak keresése</legend>
+      <label for="szo">kötelező minták a szóban</label>
+      <input name="szo" id="szo" type="text" size="30" placeholder="betű,minta,... pld. A,_BO_,BL%K" autofocus>
+      <br>
+      <label for="neszo">tiltott betűk/minták a szóban</label>
+      <input name="neszo" id="neszo" type="text" size="30" placeholder="betű,minta,betű,... pld. B,__O__">
+      <br>
+      <label for="hossz">fix szó hossz:</label>
+      <select name="hossz" id="hossz">
+        <option value="0">nincs</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+        <option value="10">10</option>
+      </select>
+      <label for="bhossz">digráf (cs, gy ...) egy betű</label>
+      <input type="checkbox" id="bhossz" name="bhossz">
+      <input type="submit" class="w3-button w3-green w3-hover-black w3-round" value="Keres">
+    </fieldset>
+  </form>
+
+  <p style="text-align:justify; white-space:pre-line;" id="talalathelye"></p>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/sql-wasm.js"></script>
+<script>
+"use strict";
+
+const SQLJS_URL = "https://cdnjs.cloudflare.com/ajax/libs/sql.js/1.8.0/";
+const HU_ABC = new Intl.Collator('hu');
+const $ = id => document.getElementById(id);
+const talalatok = $('talalathelye');
+
+// Adatbázis betöltése oldalbetöltéskor
+const dbPromise = (async () => {
+    if (typeof initSqlJs !== 'function') throw new Error("sql.js nem töltődött be");
+    const [SQL, res] = await Promise.all([
+        initSqlJs({ locateFile: f => SQLJS_URL + f }),
+        fetch("/files/szavak.db")
+    ]);
+    if (!res.ok) throw new Error("Adatbázis hiba: " + res.status);
+    return new SQL.Database(new Uint8Array(await res.arrayBuffer()));
+})();
+dbPromise.catch(() => {});
+
+// "A,B,CA,A" -> ["%A%A%", "%B%", "%CA%"]
+function mintak(szoveg) {
+    const darab = new Map();
+    for (const m of szoveg.replace(/\s/g, '').toUpperCase().split(',')) {
+        if (m) darab.set(m, (darab.get(m) || 0) + 1);
+    }
+    return [...darab].map(([m, n]) => '%' + (m + '%').repeat(n));
+}
+
+async function keres() {
+    const be = mintak($('szo').value);
+    const ne = mintak($('neszo').value);
+    if (!be.length && !ne.length) {
+        alert("Adj meg valami feltételt!");
+        return;
+    }
+
+    const where = [...be.map(() => "SZO LIKE ?"), ...ne.map(() => "SZO NOT LIKE ?")];
+    const params = [...be, ...ne];
+
+    const h = Number($('hossz').value);
+    if (h) {
+        where.push(($('bhossz').checked ? "BHOSSZ" : "HOSSZ") + "=?");
+        params.push(h);
+    }
+
+    talalatok.textContent = "keresés...";
+    try {
+        const db = await dbPromise;
+        const t0 = performance.now();
+        const res = db.exec(`SELECT SZO FROM szavak WHERE ${where.join(" AND ")}`, params);
+        const szavak = res[0]?.values.map(([s]) => s).sort(HU_ABC.compare) ?? [];
+
+        talalatok.textContent = szavak.length
+            ? `${szavak.length} találat:\n` + szavak.join(', ')
+            : "Nincs találat a megadott feltételekkel.";
+
+        if (szavak.length) {
+            console.log(`Talált: ${szavak.length} szó, futásidő: ${Math.round(performance.now() - t0)} ms`);
+        }
+    } catch (error) {
+        console.error("Hiba a keresés során:", error);
+        talalatok.textContent = "Nem sikerült betölteni az adatbázist.";
+    }
+}
+
+$('keresform').addEventListener('submit', e => {
+    e.preventDefault();
+    keres();
+});
+</script>
+
+</main>
+
+<footer class="w3-container w3-green w3-center w3-padding">
+  Kapcsolat:&nbsp;<a class="w3-hover-black" href="mailto:admin@radicspeter.hu?subject=radicspeter.hu">Radics&nbsp;Péter</a>
+  &middot;
+  <a class="w3-hover-black" target="_blank" href="https://github.com/radicspeter1975/website">github</a>
+</footer>
+
+</body>
+</html>

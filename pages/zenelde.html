@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="hu">
+<!-- 26.11.22 Google AI Studio -->
+<head>
+  <title>zenélde</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Radics Péter oldala github és AI">
+  <meta name="keywords" content="zenélde klipek kották">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/favicon.png">
+  <link rel="stylesheet" href="/css/w3.css">
+  <link rel="stylesheet" href="/css/zenelde.css">
+  <script src="/zenelde/zenelde.js?v=20261121135412"></script>
+  <script src="/js/menu.js"></script>
+</head>
+
+<body class="w3-light-grey">
+
+<!-- /header.html -->
+<div id="menu-placeholder"></div>
+
+<!-- main -->
+<main class="w3-content w3-container w3-center w3-padding-32" style="max-width:900px">
+
+<div id="toolbar" class="w3-green w3-card w3-round w3-medium">
+  <input class="w3-round" id="kertext" type="text" size="25" placeholder="kereső, -: minden, véletlen dal">
+  <button class="w3-button w3-yellow w3-hover-red w3-round-large w3-medium w3-padding-small" id="btn-uj">új dalok</button>
+  <button class="w3-button w3-yellow w3-hover-red w3-round-large w3-medium w3-padding-small" id="btn-vel">véletlen dal</button>
+  <button class="w3-button w3-yellow w3-hover-red w3-round-large w3-medium w3-padding-small" id="favours" disabled>kedvencek</button>
+  <button class="w3-button w3-red w3-hover-yellow w3-round-large w3-medium w3-padding-small" id="favbutton" title="add/remove favourites" disabled>+</button>
+</div>
+
+<div id="htartalom" class="w3-white w3-card w3-round w3-padding w3-margin-top">
+  post lekérése ...
+</div>
+
+<script>
+"use strict";
+
+(() => {
+  // ---------------- beállítások és elemek ----------------
+  const WWWPATH   = "/zenelde/";
+  const PERMALINK = "/pages/zenelde";
+  const BTN       = "w3-button w3-red w3-hover-yellow w3-round-large w3-medium w3-padding-small";
+
+  const $       = id => document.getElementById(id);
+  const hely    = $('htartalom');
+  const kertext = $('kertext');
+  const favbtn  = $('favbutton');
+  const favsbtn = $('favours');
+
+  // ---------------- adatok ----------------
+  const collator = new Intl.Collator('hu', { numeric: true, sensitivity: 'base' });
+  const indexT   = listaT.slice(-20);   // az utolsó 20 dal az ABC-rendezés előtt (időrendi)
+  listaT.sort((a, b) => collator.compare(a[2], b[2]));
+
+  const byId   = new Map(listaT.map(row => [row[0], row]));
+  const byDate = new Map(listaT.map(row => [row[1], row]));
+
+  const esc = s => String(s)
+    .replace(/&/g, '&amp;').replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+
+  const veletlen = () => listaT[Math.floor(Math.random() * listaT.length)];
+  const dalLink  = (id, html) => `<a class="w3-hover-red" href="#" data-action="song" data-id="${id}">${html}</a>`;
+
+  // ---------------- kedvencek (localStorage) ----------------
+  const favs = (() => {
+    const KEY = 'zenelde_favs';
+    let ids = new Set();
+    let ready = false;
+
+    const save = () => {
+      try { localStorage.setItem(KEY, JSON.stringify([...ids])); }
+      catch (e) { console.error(e); }
+    };
+
+    try {
+      const raw = localStorage.getItem(KEY);
+      ready = true;
+      ids = new Set(JSON.parse(raw || '[]').filter(id => byId.has(id)));
+      save();
+    } catch (e) {
+      console.error(e);
+    }
+
+    return {
+      ready,
+      get entries() {
+        return [...ids].map(id => byId.get(id))
+                       .sort((a, b) => collator.compare(a[2], b[2]));
+      },
+      has: id => ids.has(id),
+      toggle(id) { if (!ids.delete(id)) ids.add(id); save(); },
+      remove(id) { ids.delete(id); save(); },
+      clear()    { ids.clear(); save(); }
+    };
+  })();
+
+  // ---------------- megjelenítés ----------------
+  let aktualis = 0;
+  let currentId = null;
+
+  function nezet(cim, html) {
+    aktualis++;
+    currentId = null;
+    document.title = cim;
+    window.history.replaceState(null, '', PERMALINK);
+    favbtn.disabled = true;
+    hely.innerHTML = html;
+  }
+
+  function updatefavbtn() {
+    if (!currentId || !favs.ready) return;
+    favbtn.disabled = false;
+    favbtn.textContent = favs.has(currentId) ? '-' : '+';
+  }
+
+  function kiir(tartalom) {
+    hely.insertAdjacentHTML('beforeend', tartalom);
+    kertext.value = "";
+    kertext.blur();
+    updatefavbtn();
+  }
+
+  async function dal(mit) {
+    let row;
+    if (mit === 'vel')      row = veletlen();
+    else if (mit === 'akt') row = indexT.at(-1);
+    else                    row = byId.get(mit) || byDate.get(mit) || indexT.at(-1);
+
+    if (!row) {
+      nezet('zenélde', '<p>Nincs megjeleníthető dal.</p>');
+      return;
+    }
+
+    const [videoid, webcim, title] = row;
+    nezet(title,
+      `<h4 class="w3-green w3-round w3-padding-small">` +
+        `<a id="ptitle" href="${PERMALINK}?${webcim}">${esc(title)}</a> ` +
+        `<a id="currentlink" target="_blank" rel="noopener" ` +
+           `href="https://www.youtube.com/watch?v=${videoid}">${webcim}</a>` +
+      `</h4><br>`);
+
+    currentId = videoid;
+    const sajat = aktualis;
+
+    try {
+      const res = await fetch(`${WWWPATH}${webcim}.html`);
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      const tartalom = await res.text();
+      if (sajat === aktualis) kiir(tartalom);
+    } catch (err) {
+      console.error(err);
+      if (sajat === aktualis) kiir("<p>A tartalom nem elérhető.</p>");
+    }
+  }
+
+  function keres() {
+    const mit = kertext.value.toUpperCase();
+    if (!mit) {
+      const r = veletlen();
+      nezet('keresés', `<b>keress valamire ... vagy nézd meg ezt:</b><br>${dalLink(r[0], esc(r[2]))}<br><br>`);
+      return;
+    }
+
+    const talalatok = listaT.filter(r => r[2].toUpperCase().includes(mit));
+    if (talalatok.length === 0) {
+      nezet('keresés', '<b>erre nincs találat</b>');
+    } else if (talalatok.length === 1) {
+      dal(talalatok[0][0]);
+    } else {
+      nezet('keresés',
+        `<b>${talalatok.length} találat:</b><br>` +
+        talalatok.map(r => dalLink(r[0], esc(r[2])) + '<br>').join(''));
+    }
+  }
+
+  function lasttwenty() {
+    const sorok = [...indexT].reverse().map(([vid, datum, cim]) =>
+      `<a class="w3-hover-red" href="#" data-action="song" data-id="${vid}">${datum} ${esc(cim)}<br>` +
+      `<img class="w3-image" src="https://img.youtube.com/vi/${vid}/mqdefault.jpg" alt="youtube preview" loading="lazy"></a><br><br>`
+    ).join('');
+    nezet('új dalok', `<b>utolsó ${indexT.length} dal:</b><br>${sorok}`);
+  }
+
+  function favourites() {
+    if (!favs.ready) {
+      nezet('kedvencek', '<b>itt lehetnének a kedvenceid, ha a localStorage engedélyezett lenne...</b><br>');
+      return;
+    }
+
+    const lista = favs.entries;
+    const sorok = lista.map(([id, , cim]) =>
+      `${dalLink(id, esc(cim))} <button class="${BTN}" data-action="del" data-id="${id}">-</button><br>`
+    ).join('');
+
+    nezet('kedvencek',
+      `<b>mentett kedvenceid:</b><br>${sorok}` +
+      (lista.length ? `<br><button class="${BTN}" data-action="clear">összes kedvenc törlése</button><br><br>` : ''));
+  }
+
+  // ---------------- események ----------------
+  $('btn-uj').addEventListener('click', lasttwenty);
+  $('btn-vel').addEventListener('click', () => dal('vel'));
+  favsbtn.addEventListener('click', favourites);
+  favbtn.addEventListener('click', () => {
+    if (!currentId) return;
+    favs.toggle(currentId);
+    updatefavbtn();
+  });
+  kertext.addEventListener('input', keres);
+
+  hely.addEventListener('click', e => {
+    const t = e.target.closest('[data-action]');
+    if (!t || !hely.contains(t)) return;
+    e.preventDefault();
+
+    switch (t.dataset.action) {
+      case 'song':  dal(t.dataset.id); break;
+      case 'del':   favs.remove(t.dataset.id); favourites(); break;
+      case 'clear':
+        if (window.confirm('tényleg töröljem mind?')) {
+          favs.clear();
+          favourites();
+        }
+        break;
+    }
+  });
+
+  // Ha a post-ok HTML-je valahol globális dal(...)-ot hív, ezt vedd ki kommentből:
+  // window.dal = dal;
+
+  // ---------------- indulás ----------------
+  if (favs.ready) favsbtn.disabled = false;
+  else alert('cookie/localStorage nincs engedélyezve');
+
+  let querystring = window.location.search.substring(1).replaceAll('+', ' ');
+  try { querystring = decodeURIComponent(querystring); } catch {}
+
+  if (querystring.startsWith('?')) {
+    kertext.value = querystring.substring(1);
+    keres();
+  } else {
+    switch (querystring) {
+      case '':    dal('akt');   break;
+      case 'uto': lasttwenty(); break;
+      case 'fav': favourites(); break;
+      default:    dal(querystring);
+    }
+  }
+})();
+</script>
+
+</main>
+
+<footer class="w3-container w3-green w3-center w3-padding">
+  Kapcsolat:&nbsp;<a class="w3-hover-black" href="mailto:admin@radicspeter.hu?subject=radicspeter.hu">Radics&nbsp;Péter</a>
+  &middot;
+  <a class="w3-hover-black" target="_blank" href="https://github.com/radicspeter1975/website">github</a>
+  &middot;
+  <a class="w3-hover-black" target="_blank" href="https://www.youtube.com/playlist?list=PL4YO3WAzcerWCpRx7YLntWf3FEMS0MXRs">playlist</a>
+</footer>
+
+</body>
+</html>

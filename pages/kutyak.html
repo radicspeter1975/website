@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="hu">
+<!-- 26.11.22 Google AI Studio -->
+<head>
+  <title>kutyáink</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Radics Péter oldala github és AI">
+  <meta name="keywords" content="zenélde klipek kották">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="apple-touch-icon" href="/favicon.png">
+  <link rel="stylesheet" href="/css/w3.css">
+  <script src="/js/menu.js"></script>
+</head>
+
+<body class="w3-light-grey">
+
+<!-- /header.html -->
+<div id="menu-placeholder"></div>
+
+<!-- main -->
+<main class="w3-content w3-container w3-center w3-padding-32" style="max-width:900px">
+
+<div class="w3-green w3-card w3-round w3-medium">
+  <button type="button" class="w3-button w3-hover-black" id="btn-first" aria-label="első kép">&lt;&lt;</button>
+  <button type="button" class="w3-button w3-hover-black" id="btn-prev" aria-label="előző kép">&lt;</button>
+  <b id="picnum" style="display:inline-block; min-width:4.5em"></b>
+  <button type="button" class="w3-button w3-hover-black" id="btn-next" aria-label="következő kép">&gt;</button>
+  <button type="button" class="w3-button w3-hover-black" id="btn-last" aria-label="utolsó kép">&gt;&gt;</button>
+</div>
+
+<img id="kutyakep" class="w3-image w3-round w3-card w3-margin-top w3-margin-bottom" style="cursor:pointer" alt="kutyáink" title="Kattints egy véletlen képhez!">
+
+<script>
+"use strict";
+
+(() => {
+  const TOTAL = 60;
+  const img = document.getElementById("kutyakep");
+  const num = document.getElementById("picnum");
+  let idx = 1;
+
+  function show(n) {
+    idx = ((n - 1 + TOTAL) % TOTAL) + 1;
+    img.src = `/img/kutyak/${String(idx).padStart(2, "0")}.jpg`;
+    num.textContent = `${idx} / ${TOTAL}`;
+  }
+
+  const random = () => show(Math.floor(Math.random() * TOTAL) + 1);
+
+  document.getElementById("btn-first").addEventListener("click", () => show(1));
+  document.getElementById("btn-prev").addEventListener("click",  () => show(idx - 1));
+  document.getElementById("btn-next").addEventListener("click",  () => show(idx + 1));
+  document.getElementById("btn-last").addEventListener("click",  () => show(TOTAL));
+  img.addEventListener("click", random);
+
+  document.addEventListener("keydown", e => {
+    if (e.key === "ArrowLeft")  show(idx - 1);
+    if (e.key === "ArrowRight") show(idx + 1);
+    if (e.key === "Home")       show(1);
+    if (e.key === "End")        show(TOTAL);
+  });
+
+  random();
+})();
+</script>
+
+</main>
+
+<footer class="w3-container w3-green w3-center w3-padding">
+  Kapcsolat:&nbsp;<a class="w3-hover-black" href="mailto:admin@radicspeter.hu?subject=radicspeter.hu">Radics&nbsp;Péter</a>
+  &middot;
+  <a class="w3-hover-black" target="_blank" href="https://github.com/radicspeter1975/website">github</a>
+</footer>
+
+</body>
+
+</html>
